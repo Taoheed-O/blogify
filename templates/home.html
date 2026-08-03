@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blogify | Modern Blog</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="{% static 'home.css' %}">
+</head>
+
+<body>
+
+    <!-- ==========================
+            Navigation
+    =========================== -->
+
+    <nav>
+        <div class="logo">
+            Blogify
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Technology</a></li>
+            <li><a href="#">Programming</a></li>
+            <li><a href="#">Travel</a></li>
+            <li><a href="#">Lifestyle</a></li>
+        </ul>
+
+        <div class="nav-actions">
+
+            <!-- Authentication Buttons -->
+            <div class="auth-buttons">
+                <a href="login.html" class="login-btn">
+                    Login
+                </a>
+
+                <a href="register.html" class="register-btn">
+                    Register
+                </a>
+            </div>
+
+            <!-- Search Box -->
+            <div class="search-box">
+                <input
+                    type="text"
+                    placeholder="Search articles...">
+
+                <button class="search-btn">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+
+            <!-- Dark Mode Button -->
+            <button class="theme-btn">
+                <i class="fas fa-moon"></i>
+            </button>
+
+        </div>
+    </nav>
+
+    <!-- ==========================
+            Hero Section
+    =========================== -->
+
+    <header class="hero">
+
+        <div class="hero-text">
+
+            <h1>
+                Discover Amazing Stories Every Day
+            </h1>
+
+            <p>
+                Explore inspiring articles written by talented
+                creators from around the world.
+            </p>
+
+            <button>
+                Start Reading
+            </button>
+
+        </div>
+
+        <div class="hero-image">
+
+            <img
+                src="https://images.unsplash.com/photo-1499750310107-5fef28a66643"
+                alt="Hero Image">
+
+        </div>
+
+    </header>
+
+    <!-- ==========================
+            Categories
+    =========================== -->
+
+    <section class="categories">
+
+        <span>Technology</span>
+        <span>Programming</span>
+        <span>Artificial Intelligence</span>
+        <span>Business</span>
+        <span>Travel</span>
+        <span>Design</span>
+        <span>Lifestyle</span>
+
+    </section>
+
+    <!-- ==========================
+            Main Content
+    =========================== -->
+
+    <div class="container">
+
+        <!-- Blog Area -->
+
+        <main>
+
+            <!-- Featured Blog -->
+
+            <section class="featured">
+
+                <img
+                    src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3"
+                    alt="Featured">
+
+                <div class="featured-content">
+
+                    <h2>Featured Story</h2>
+
+                    <p>
+                        Artificial Intelligence is transforming every
+                        industry. Learn how it is shaping our future.
+                    </p>
+
+                    <button>
+                        Read More
+                    </button>
+
+                </div>
+
+            </section>
+
+            <!-- Blog Cards -->
+
+            <section class="blog-grid">
+
+                <!-- Card -->
+
+                <article class="card">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1518770660439-4636190af475"
+                        alt="Python">
+
+                    <div class="content">
+
+                        <h3>
+                            Learn Python in 30 Days
+                        </h3>
+
+                        <p>
+                            Master Python programming from beginner
+                            to advanced.
+                        </p>
+
+                        <div class="info">
+
+                            <span>
+                                <i class="fa-solid fa-user"></i>
+                                John Doe
+                            </span>
+
+                            <span>
+                                <i class="fa-solid fa-clock"></i>
+                                5 min read
+                            </span>
+
+                        </div>
+
+                        <button>
+                            Read More
+                        </button>
+
+                    </div>
+
+                </article>
+
+                <!-- Card -->
+
+                <article class="card">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1498050108023-c5249f4df085"
+                        alt="JavaScript">
+
+                    <div class="content">
+
+                        <h3>
+                            Modern JavaScript Tips
+                        </h3>
+
+                        <p>
+                            Improve your coding skills with ES2026
+                            features and best practices.
+                        </p>
+
+                        <div class="info">
+
+                            <span>
+                                <i class="fa-solid fa-user"></i>
+                                David Smith
+                            </span>
+
+                            <span>
+                                <i class="fa-solid fa-clock"></i>
+                                6 min read
+                            </span>
+
+                        </div>
+
+                        <button>
+                            Read More
+                        </button>
+
+                    </div>
+
+                </article>
+
+                <!-- Card -->
+
+                <article class="card">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1516321497487-e288fb19713f"
+                        alt="Web Design">
+
+                    <div class="content">
+
+                        <h3>
+                            UI Design Trends
+                        </h3>
+
+                        <p>
+                            Discover beautiful interfaces that are
+                            dominating the web in 2026.
+                        </p>
+
+                        <div class="info">
+
+                            <span>
+                                <i class="fa-solid fa-user"></i>
+                                Mary Johnson
+                            </span>
+
+                            <span>
+                                <i class="fa-solid fa-clock"></i>
+                                7 min read
+                            </span>
+
+                        </div>
+
+                        <button>
+                            Read More
+                        </button>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+        </main>
+
+        <!-- Sidebar -->
+
+        <aside>
+
+            <!-- Trending -->
+
+            <div class="sidebar-box">
+
+                <h2>
+                    Trending Posts
+                </h2>
+
+                <ul>
+
+                    <li>Artificial Intelligence</li>
+                    <li>Python Automation</li>
+                    <li>React Development</li>
+                    <li>Data Science</li>
+                    <li>Cyber Security</li>
+
+                </ul>
+
+            </div>
+
+            <!-- Newsletter -->
+
+            <div class="sidebar-box">
+
+                <h2>
+                    Newsletter
+                </h2>
+
+                <p>
+                    Subscribe to receive weekly articles.
+                </p>
+
+                <input
+                    type="email"
+                    placeholder="Enter your email">
+
+                <button>
+                    Subscribe
+                </button>
+
+            </div>
+
+        </aside>
+
+    </div>
+
+    <!-- ==========================
+            Footer
+    =========================== -->
+
+    <footer>
+
+        <h2>Blogify</h2>
+
+        <p>
+            Made with ❤️ for developers, designers, and creators.
+        </p>
+
+        <div class="socials">
+
+            <a href="#">
+                <i class="fab fa-facebook"></i>
+            </a>
+
+            <a href="#">
+                <i class="fab fa-twitter"></i>
+            </a>
+
+            <a href="#">
+                <i class="fab fa-instagram"></i>
+            </a>
+
+            <a href="#">
+                <i class="fab fa-linkedin"></i>
+            </a>
+
+        </div>
+
+    </footer>
+
+</body>
+</html>
