@@ -9,7 +9,9 @@ def home(request):
     # All categories
     categories = Category.objects.all()
     # Featured posts
-    featured_posts = Blog.objects.filter(is_featured=True).order_by('-updated_at')
+    featured_posts = Blog.objects.filter(is_featured=True, status='Published').order_by('-updated_at')
+    # Posts
+    posts = Blog.objects.filter(is_featured=False, status='Published')
 
     context = {
         'categories': categories,

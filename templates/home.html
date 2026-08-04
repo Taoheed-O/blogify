@@ -147,7 +147,7 @@
                         <h2>{{post.title}}</h2>
 
                         <p>
-                            {{post.short_description}}
+                            {{post.short_description | truncatewords:10}}
                         </p>
 
                         <button>
@@ -160,6 +160,119 @@
                 {% endif %}
             {% endfor %}
 
+
+                <!-- ==========================
+                        Latest Stories
+                =========================== -->
+
+                <section class="latest-posts">
+
+                    <div class="section-title">
+                        <h2>Featured Posts</h2>
+                        <a href="#">View All</a>
+                    </div>
+
+                    <div class="latest-grid">
+                        {% for post in featured_posts %}
+                            {% if not forloop.first %}
+
+                            <article class="latest-card">
+
+                                <img src="{{post.image.url}}" alt="">
+
+                                <div class="latest-content">
+
+                                    <span class="category-tag">
+                                        {{post.category}}
+                                    </span>
+
+                                    <h3>
+                                        {{post.title}}
+                                    </h3>
+
+                                    <p>
+                                        {{post.short_description | truncatewords:10}}
+                                    </p>
+
+                                    <div class="latest-info">
+
+<!--                                        <span>{{post.author}}</span>-->
+
+                                        <span>{{post.created_at | timesince}} ago</span>
+
+                                    </div>
+
+                                </div>
+
+                            </article>
+                            {% endif %}
+                        {% endfor %}
+
+<!--                        <article class="latest-card">-->
+
+<!--                            <img src="images/post2.jpg" alt="">-->
+
+<!--                            <div class="latest-content">-->
+
+<!--                                <span class="category-tag">-->
+<!--                                    Programming-->
+<!--                                </span>-->
+
+<!--                                <h3>-->
+<!--                                    Mastering CSS Grid in 2026-->
+<!--                                </h3>-->
+
+<!--                                <p>-->
+<!--                                    Learn the modern layout system every frontend developer-->
+<!--                                    should know.-->
+<!--                                </p>-->
+
+<!--                                <div class="latest-info">-->
+
+<!--                                    <span>Mary Jane</span>-->
+
+<!--                                    <span>6 min read</span>-->
+
+<!--                                </div>-->
+
+<!--                            </div>-->
+
+<!--                        </article>-->
+
+<!--                        <article class="latest-card">-->
+
+<!--                            <img src="images/post3.jpg" alt="">-->
+
+<!--                            <div class="latest-content">-->
+
+<!--                                <span class="category-tag">-->
+<!--                                    AI-->
+<!--                                </span>-->
+
+<!--                                <h3>-->
+<!--                                    Top 10 Machine Learning Libraries-->
+<!--                                </h3>-->
+
+<!--                                <p>-->
+<!--                                    Discover the best Python libraries for building-->
+<!--                                    intelligent applications.-->
+<!--                                </p>-->
+
+<!--                                <div class="latest-info">-->
+
+<!--                                    <span>David</span>-->
+
+<!--                                    <span>8 min read</span>-->
+
+<!--                                </div>-->
+
+<!--                            </div>-->
+
+<!--                        </article>-->
+
+                    </div>
+
+                </section>
             <!-- Blog Cards -->
 
             <section class="blog-grid">

@@ -77,6 +77,8 @@ nav{
 
 .register-btn:hover {
     transform: translateY(-3px);
+    background: rgba(255, 101, 132, 1);
+    color: #ffffff;
     box-shadow: 0 12px 25px rgba(108, 99, 255, 0.45);
 }
 
@@ -371,6 +373,95 @@ header{
 
   object-fit:cover;
 
+}
+/* ===========================
+   Latest Stories
+=========================== */
+.latest-posts {
+    margin: 60px 0;
+}
+
+.section-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 30px;
+}
+
+.section-title h2 {
+    font-size: 32px;
+    color: #222;
+}
+
+.section-title a {
+    text-decoration: none;
+    color: #6c63ff;
+    font-weight: 600;
+}
+
+.latest-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.latest-card {
+    display: flex;
+    gap: 15px;
+
+    background: #ffffff;
+    border-radius: 15px;
+
+    overflow: hidden;
+
+    box-shadow: 0 10px 25px rgba(0,0,0,.08);
+
+    transition: .3s;
+}
+
+.latest-card:hover {
+    transform: translateY(-8px);
+}
+
+.latest-card img {
+    width: 170px;
+    object-fit: cover;
+}
+
+.latest-content {
+    padding: 15px;
+}
+
+.category-tag {
+    display: inline-block;
+
+    background: #6c63ff;
+    color: white;
+
+    padding: 5px 12px;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+}
+
+.latest-content h3 {
+    margin: 12px 0;
+    font-size: 20px;
+}
+
+.latest-content p {
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.latest-info {
+    display: flex;
+    justify-content: space-between;
+
+    color: #888;
+    font-size: 14px;
 }
 
 .blog-grid{
