@@ -1,7 +1,6 @@
 from django.urls import path
 from . import views
 
-# urlpatterns = [
-#     path('',views.chat,name='chat'),
-#     path('chat/', views.chat_api, name="chat_api"),
-# ]
+urlpatterns = [
+    path('<int:category_id>', views.categorical_posts, name="categorical_posts"),
+]

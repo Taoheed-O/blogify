@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>{{category}} | Blogify</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet"
+          href="{% static 'css/category.css' %}">
+
+</head>
+
+<body>
+
+    <!-- ==========================================
+                    Navigation
+    =========================================== -->
+
+    <nav>
+
+        <div class="logo">
+            Blogify
+        </div>
+
+        <ul class="nav-links">
+
+            <li>
+                <a href="{% url 'home' %}">Home</a>
+            </li>
+            {% for category in categories %}
+            <li>
+                <a href="#">{{category}}</a>
+            </li>
+            {% endfor %}
+
+<!--            <li>-->
+<!--                <a href="#">Programming</a>-->
+<!--            </li>-->
+
+<!--            <li>-->
+<!--                <a href="#">Business</a>-->
+<!--            </li>-->
+
+<!--            <li>-->
+<!--                <a href="#">Travel</a>-->
+<!--            </li>-->
+
+<!--            <li>-->
+<!--                <a href="#">Lifestyle</a>-->
+<!--            </li>-->
+
+        </ul>
+
+        <div class="nav-actions">
+
+            <div class="auth-buttons">
+
+                <a href="login.html"
+                   class="login-btn">
+                    Login
+                </a>
+
+                <a href="register.html"
+                   class="register-btn">
+                    Register
+                </a>
+
+            </div>
+
+            <div class="search-box">
+
+                <input type="text"
+                       placeholder="Search articles...">
+
+                <button class="search-btn">
+
+                    <i class="fas fa-search"></i>
+
+                </button>
+
+            </div>
+
+            <button class="theme-btn">
+
+                <i class="fas fa-moon"></i>
+
+            </button>
+
+        </div>
+
+    </nav>
+
+    <!-- ==========================================
+                    Category Hero
+    =========================================== -->
+
+    <header class="category-hero">
+
+        <div class="hero-overlay">
+
+            <span class="category-badge">
+
+                {{category}}
+
+            </span>
+
+            <h1>
+
+                Explore the Latest {{category}} Articles
+
+            </h1>
+
+            <p>
+
+                Stay informed with the latest insights on software
+                engineering, artificial intelligence, cybersecurity,
+                cloud computing, web development and emerging technologies.
+
+            </p>
+
+        </div>
+
+    </header>
+
+    <!-- ==========================================
+                    Breadcrumb
+    =========================================== -->
+
+    <section class="breadcrumb">
+
+        <a href="{% url 'home' %}">
+
+            Home
+
+        </a>
+
+        <i class="fas fa-angle-right"></i>
+
+        <span>
+
+            {{category}}
+
+        </span>
+
+    </section>
+
+    <!-- ==========================================
+                Category Information
+    =========================================== -->
+
+    <section class="category-header">
+
+        <div class="category-info">
+
+            <h2>
+
+                {{category}}
+
+            </h2>
+
+            <p>
+
+                Showing <strong>48</strong> articles in {{category}}
+
+            </p>
+
+        </div>
+
+        <div class="category-sort">
+
+            <label for="sort">
+
+                Sort By
+
+            </label>
+
+            <select id="sort">
+
+                <option>
+                    Newest
+                </option>
+
+                <option>
+                    Most Popular
+                </option>
+
+                <option>
+                    Oldest
+                </option>
+
+            </select>
+
+        </div>
+
+    </section>
+
+    <!-- ==========================================
+                Featured Category Post
+    =========================================== -->
+
+    <section class="featured-category">
+        {% for post in posts %}
+            {% if forloop.first %}
+
+            <div class="featured-image">
+
+                <img src="{{ post.image.url }}"
+                     alt="Featured {{category}} Article">
+
+            </div>
+
+            <div class="featured-details">
+
+                <span class="featured-tag">
+
+                    Featured Story
+
+                </span>
+
+                <h2>
+
+                    {{post.title}}
+
+                </h2>
+
+                <p>
+
+                    {{post.short_description}}
+
+                </p>
+
+                <div class="featured-meta">
+
+                    <span>
+
+                        <i class="fas fa-user"></i>
+
+                        {{post.author}}
+
+                    </span>
+
+                    <span>
+
+                        <i class="fas fa-calendar"></i>
+
+                        {{post.created_at | timesince}} ago
+
+                    </span>
+
+                    <span>
+
+                        <i class="fas fa-clock"></i>
+
+                        8 min read
+
+                    </span>
+
+                </div>
+
+                <a href="post.html"
+                   class="read-more-btn">
+
+                    Read Full Article
+
+                    <i class="fas fa-arrow-right"></i>
+
+                </a>
+
+            </div>
+            {% else %}
+            <h2> No Post found for this category.</h2>
+            {% endif %}
+        {% endfor %}
+
+    </section>
+
+    <!-- ========= SECTION 2========= -->
+<!-- =========================================================
+                    Latest Posts & Sidebar
+========================================================== -->
+
+    <section class="content-wrapper">
+
+        <!-- ==========================
+                Main Content
+        =========================== -->
+
+        <main class="category-main">
+
+            <!-- Section Title -->
+
+            <div class="section-heading">
+
+                <h2>Latest in {{category}}</h2>
+
+                <a href="#">View All</a>
+
+            </div>
+
+            <!-- Latest Posts -->
+
+            <div class="latest-post-grid">
+
+                <!-- Post 1 -->
+
+                <article class="latest-post">
+
+                    <img src="images/post1.jpg" alt="AI Article">
+
+                    <div class="latest-content">
+
+                        <span class="post-category">
+                            Artificial Intelligence
+                        </span>
+
+                        <h3>
+                            How Artificial Intelligence is Transforming Modern Software Development
+                        </h3>
+
+                        <p>
+                            Discover how AI-powered tools are improving productivity,
+                            debugging, testing, and application deployment.
+                        </p>
+
+                        <div class="post-meta">
+
+                            <span>
+                                <i class="fas fa-user"></i>
+                                John Doe
+                            </span>
+
+                            <span>
+                                <i class="fas fa-clock"></i>
+                                5 min read
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+                <!-- Post 2 -->
+
+                <article class="latest-post">
+
+                    <img src="images/post2.jpg" alt="Cyber Security">
+
+                    <div class="latest-content">
+
+                        <span class="post-category">
+                            Cyber Security
+                        </span>
+
+                        <h3>
+                            Essential Cyber Security Tips Every Developer Should Know
+                        </h3>
+
+                        <p>
+                            Learn practical ways to secure applications,
+                            protect APIs and prevent common attacks.
+                        </p>
+
+                        <div class="post-meta">
+
+                            <span>
+                                <i class="fas fa-user"></i>
+                                Sarah Johnson
+                            </span>
+
+                            <span>
+                                <i class="fas fa-clock"></i>
+                                6 min read
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+                <!-- Post 3 -->
+
+                <article class="latest-post">
+
+                    <img src="images/post3.jpg" alt="Cloud Computing">
+
+                    <div class="latest-content">
+
+                        <span class="post-category">
+                            Cloud Computing
+                        </span>
+
+                        <h3>
+                            Why Cloud Computing is the Future of Enterprise Applications
+                        </h3>
+
+                        <p>
+                            Understand cloud infrastructure, scalability,
+                            and deployment strategies for modern businesses.
+                        </p>
+
+                        <div class="post-meta">
+
+                            <span>
+                                <i class="fas fa-user"></i>
+                                David Smith
+                            </span>
+
+                            <span>
+                                <i class="fas fa-clock"></i>
+                                7 min read
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </main>
+
+        <!-- ==========================
+                Sidebar
+        =========================== -->
+
+        <aside class="sidebar">
+
+            <!-- Search -->
+
+            <div class="sidebar-widget">
+
+                <h3>Search</h3>
+
+                <form>
+
+                    <input
+                        type="text"
+                        placeholder="Search articles...">
+
+                    <button>
+
+                        <i class="fas fa-search"></i>
+
+                    </button>
+
+                </form>
+
+            </div>
+
+            <!-- Popular Posts -->
+
+            <div class="sidebar-widget">
+
+                <h3>Popular Posts</h3>
+
+                <ul>
+
+                    <li>
+                        <a href="#">
+                            Top 10 Python Libraries for AI
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            CSS Grid vs Flexbox
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            Django Authentication Guide
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            Building REST APIs with Flask
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            JavaScript ES2026 Features
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+            <!-- Categories -->
+
+            <div class="sidebar-widget">
+
+                <h3>Categories</h3>
+
+                <div class="category-list">
+                    {% for category in categories %}
+                    <a href="#">{{category}}</a>
+                    {% endfor %}
+<!--                    <a href="#">Programming</a>-->
+<!--                    <a href="#">Artificial Intelligence</a>-->
+<!--                    <a href="#">Business</a>-->
+<!--                    <a href="#">Travel</a>-->
+<!--                    <a href="#">Lifestyle</a>-->
+
+                </div>
+
+            </div>
+
+            <!-- Tags -->
+
+            <div class="sidebar-widget">
+
+                <h3>Popular Tags</h3>
+
+                <div class="tag-list">
+
+                    <a href="#">Python</a>
+
+                    <a href="#">Django</a>
+
+                    <a href="#">Flask</a>
+
+                    <a href="#">AI</a>
+
+                    <a href="#">CSS</a>
+
+                    <a href="#">JavaScript</a>
+
+                    <a href="#">HTML</a>
+
+                    <a href="#">Cloud</a>
+
+                </div>
+
+            </div>
+
+            <!-- Newsletter -->
+
+            <div class="sidebar-widget newsletter-widget">
+
+                <h3>Newsletter</h3>
+
+                <p>
+                    Subscribe to receive our latest articles every week.
+                </p>
+
+                <input
+                    type="email"
+                    placeholder="Enter your email">
+
+                <button>
+
+                    Subscribe
+
+                </button>
+
+            </div>
+
+        </aside>
+
+    </section>
+
+        <!-- =========================================================
+                        All Category Posts
+    ========================================================== -->
+
+    <section class="all-posts">
+
+        <div class="section-heading">
+
+            <h2>All {{category}} Articles</h2>
+
+            <p>
+                Browse all articles in the {{category}} category.
+            </p>
+
+        </div>
+
+        <div class="blog-grid">
+            {% for post in posts %}
+                {% if not forloop.first %}
+
+                <!-- ===== Card 1 ===== -->
+
+                <article class="card">
+
+                    <img src="{{post.image.url}}"
+                         alt="{{category}}">
+
+                    <div class="card-content">
+
+                        <span class="post-category">
+                            {{category}}
+                        </span>
+
+                        <h3>
+                            {{post.title}}
+                        </h3>
+
+                        <p>
+
+                            {{post.short_description}}
+
+                        </p>
+
+                        <div class="card-meta">
+
+                            <span>
+                                <i class="fas fa-user"></i>
+                                {{post.author}}
+                            </span>
+
+                            <span>
+                                6 min read
+                            </span>
+
+                        </div>
+
+                        <a href="post.html"
+                           class="card-btn">
+
+                            Read More
+
+                        </a>
+
+                    </div>
+
+                </article>
+                {% endif %}
+            {% endfor %}
+
+            <!-- ===== Card 2 ===== -->
+
+<!--            <article class="card">-->
+
+<!--                <img src="images/post5.jpg"-->
+<!--                     alt="{{category}}">-->
+
+<!--                <div class="card-content">-->
+
+<!--                    <span class="post-category">-->
+<!--                        Programming-->
+<!--                    </span>-->
+
+<!--                    <h3>-->
+
+<!--                        Modern JavaScript Best Practices-->
+
+<!--                    </h3>-->
+
+<!--                    <p>-->
+
+<!--                        Learn clean coding techniques for-->
+<!--                        scalable applications.-->
+
+<!--                    </p>-->
+
+<!--                    <div class="card-meta">-->
+
+<!--                        <span>-->
+
+<!--                            <i class="fas fa-user"></i>-->
+
+<!--                            Sarah Johnson-->
+
+<!--                        </span>-->
+
+<!--                        <span>-->
+
+<!--                            7 min read-->
+
+<!--                        </span>-->
+
+<!--                    </div>-->
+
+<!--                    <a href="post.html"-->
+<!--                       class="card-btn">-->
+
+<!--                        Read More-->
+
+<!--                    </a>-->
+
+<!--                </div>-->
+
+<!--            </article>-->
+
+
+
+
+            <!-- ===== Duplicate the cards below ===== -->
+
+            <!--
+                Copy the three cards above
+                two more times to create
+                a total of nine blog cards.
+            -->
+
+        </div>
+
+    </section>
+
+    <!-- =========================================================
+                        Pagination
+    ========================================================== -->
+
+    <section class="pagination">
+
+        <a href="#">
+            <i class="fas fa-angle-left"></i>
+            Previous
+        </a>
+
+        <a href="#" class="active">
+            1
+        </a>
+
+        <a href="#">
+            2
+        </a>
+
+        <a href="#">
+            3
+        </a>
+
+        <a href="#">
+            4
+        </a>
+
+        <a href="#">
+            Next
+            <i class="fas fa-angle-right"></i>
+        </a>
+
+    </section>
+
+    <!-- =========================================================
+                        Newsletter
+    ========================================================== -->
+
+    <section class="newsletter">
+
+        <div class="newsletter-content">
+
+            <h2>
+
+                Subscribe to Our Newsletter
+
+            </h2>
+
+            <p>
+
+                Receive the latest articles, tutorials,
+                and technology news directly in your inbox.
+
+            </p>
+
+            <form>
+
+                <input type="email"
+                       placeholder="Enter your email address">
+
+                <button>
+
+                    Subscribe
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+    <!-- =========================================================
+                        Footer
+    ========================================================== -->
+
+    <footer>
+
+        <div class="footer-container">
+
+            <div class="footer-about">
+
+                <h2>
+
+                    Blogify
+
+                </h2>
+
+                <p>
+
+                    Blogify is a modern blogging platform
+                    dedicated to technology, programming,
+                    artificial intelligence and innovation.
+
+                </p>
+
+            </div>
+
+            <div class="footer-links">
+
+                <h3>
+
+                    Quick Links
+
+                </h3>
+
+                <ul>
+
+                    <li>
+
+                        <a href="index.html">
+
+                            Home
+
+                        </a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="#">
+
+                            Categories
+
+                        </a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="#">
+
+                            About
+
+                        </a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="#">
+
+                            Contact
+
+                        </a>
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+            <div class="footer-categories">
+
+                <h3>
+
+                    Categories
+
+                </h3>
+
+                <ul>
+
+                    <li><a href="#">{{category}}</a></li>
+
+                    <li><a href="#">Programming</a></li>
+
+                    <li><a href="#">Artificial Intelligence</a></li>
+
+                    <li><a href="#">Cyber Security</a></li>
+
+                    <li><a href="#">Business</a></li>
+
+                </ul>
+
+            </div>
+
+            <div class="footer-social">
+
+                <h3>
+
+                    Follow Us
+
+                </h3>
+
+                <div class="social-icons">
+
+                    <a href="#">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+
+                    <a href="#">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+
+                    <a href="#">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+
+                    <a href="#">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+
+                    <a href="#">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="copyright">
+
+            <p>
+
+                © 2026 Blogify.
+                All Rights Reserved.
+
+            </p>
+
+        </div>
+
+    </footer>
+
+</body>
+
+</html>

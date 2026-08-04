@@ -32,6 +32,9 @@
         </div>
 
         <ul class="nav-links">
+            <li>
+                <a href="{% url 'home' %}">Home</a>
+            </li>
             {% for category in categories %}
             <li><a href="#">{{category}}</a></li>
 <!--            <li><a href="#">Technology</a></li>-->
