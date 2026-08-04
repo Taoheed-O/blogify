@@ -32,11 +32,13 @@
         </div>
 
         <ul class="nav-links">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Technology</a></li>
-            <li><a href="#">Programming</a></li>
-            <li><a href="#">Travel</a></li>
-            <li><a href="#">Lifestyle</a></li>
+            {% for category in categories %}
+            <li><a href="#">{{category}}</a></li>
+<!--            <li><a href="#">Technology</a></li>-->
+<!--            <li><a href="#">Programming</a></li>-->
+<!--            <li><a href="#">Travel</a></li>-->
+<!--            <li><a href="#">Lifestyle</a></li>-->
+            {% endfor %}
         </ul>
 
         <div class="nav-actions">
@@ -109,15 +111,16 @@
     =========================== -->
 
     <section class="categories">
+        {% for category in categories %}
 
-        <span>Technology</span>
-        <span>Programming</span>
-        <span>Artificial Intelligence</span>
-        <span>Business</span>
-        <span>Travel</span>
-        <span>Design</span>
-        <span>Lifestyle</span>
-
+        <span>{{category}}</span>
+<!--        <span>Programming</span>-->
+<!--        <span>Artificial Intelligence</span>-->
+<!--        <span>Business</span>-->
+<!--        <span>Travel</span>-->
+<!--        <span>Design</span>-->
+<!--        <span>Lifestyle</span>-->
+        {% endfor %}
     </section>
 
     <!-- ==========================
@@ -131,29 +134,31 @@
         <main>
 
             <!-- Featured Blog -->
+            {% for post in featured_posts %}
+                {% if forloop.first %}
+                <section class="featured">
 
-            <section class="featured">
+                    <img
+                        src="{{ post.image.url }}"
+                        alt="Featured">
 
-                <img
-                    src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3"
-                    alt="Featured">
+                    <div class="featured-content">
 
-                <div class="featured-content">
+                        <h2>{{post.title}}</h2>
 
-                    <h2>Featured Story</h2>
+                        <p>
+                            {{post.short_description}}
+                        </p>
 
-                    <p>
-                        Artificial Intelligence is transforming every
-                        industry. Learn how it is shaping our future.
-                    </p>
+                        <button>
+                            Read More
+                        </button>
 
-                    <button>
-                        Read More
-                    </button>
+                    </div>
 
-                </div>
-
-            </section>
+                </section>
+                {% endif %}
+            {% endfor %}
 
             <!-- Blog Cards -->
 
