@@ -213,6 +213,26 @@ header{
   color:white;
 
 }
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    min-height: 10vh;
+    max-height: 90vh;
+    padding: 70px 10%;
+
+    background:
+        linear-gradient(
+            rgba(0, 0, 0, 0.55),
+            rgba(0, 0, 0, 0.30)
+        );
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    color: #ffffff;
+}
 
 .hero-text h1{
 
@@ -256,7 +276,7 @@ header{
 
 .hero-image img{
 
-  width:100%;
+  width:80%;
 
   border-radius:20px;
 
@@ -328,6 +348,19 @@ header{
 
   gap:20px;
 
+}
+.featured-content button{
+    padding:12px 25px;
+
+  background:#FF6584;
+
+  border:none;
+
+  color:white;
+
+  border-radius:30px;
+
+  cursor:pointer;
 }
 
 .featured img{
@@ -509,7 +542,7 @@ header{
   grid-template-columns:1fr;
 
   text-align:center;
-    
+
 
 }
 
