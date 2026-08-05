@@ -41,7 +41,7 @@
     <section class="categories">
         {% for category in categories %}
 
-        <span>{{category}}</span>
+        <span> <a href="{% url 'categorical_posts' category.id %}"> {{category.title}}</a> </span>
 <!--        <span>Programming</span>-->
 <!--        <span>Artificial Intelligence</span>-->
 <!--        <span>Business</span>-->

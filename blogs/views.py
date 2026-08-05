@@ -11,6 +11,5 @@ def categorical_posts(request, category_id):
     context = {
         'posts': posts,
         'category': category,
-        'categories': categories,
     }
     return render(request, 'category.html', context)

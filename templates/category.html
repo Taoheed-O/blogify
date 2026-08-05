@@ -413,7 +413,7 @@
 
                 <div class="category-list">
                     {% for category in categories %}
-                    <a href="#">{{category}}</a>
+                    <a href="{% url 'categorical_posts' category.id %}">{{category}}</a>
                     {% endfor %}
 <!--                    <a href="#">Programming</a>-->
 <!--                    <a href="#">Artificial Intelligence</a>-->

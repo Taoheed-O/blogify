@@ -38,7 +38,7 @@
                 <a href="{% url 'home' %}">Home</a>
             </li>
             {% for category in categories %}
-            <li><a href="#">{{category}}</a></li>
+            <li><a href="{% url 'categorical_posts' category.id %}">{{category}}</a></li>
 <!--            <li><a href="#">Technology</a></li>-->
 <!--            <li><a href="#">Programming</a></li>-->
 <!--            <li><a href="#">Travel</a></li>-->

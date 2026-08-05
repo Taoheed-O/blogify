@@ -7,7 +7,7 @@ from blogs.models import Category, Blog
 # Homepage...
 def home(request):
     # All categories
-    categories = Category.objects.all()
+    # categories = Category.objects.all() # Using the custom context processor instead...
     # Featured posts
     featured_posts = Blog.objects.filter(is_featured=True, status='Published').order_by('-updated_at')
     # Not Featured posts
@@ -16,7 +16,6 @@ def home(request):
     posts = Blog.objects.filter(is_featured=False, status='Published')
 
     context = {
-        'categories': categories,
         'featured_posts': featured_posts,
         'not_featured_posts': not_featured_posts,
     }
