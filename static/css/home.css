@@ -355,7 +355,7 @@ header{
 
 }
 .featured-content button{
-    padding:12px 25px;
+  padding:12px 25px;
 
   background:#FF6584;
 
@@ -366,6 +366,10 @@ header{
   border-radius:30px;
 
   cursor:pointer;
+}
+.featured-content button:hover{
+    background: #9370db;
+    transition: .4s;
 }
 
 .featured img{

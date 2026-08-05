@@ -13,3 +13,8 @@ def categorical_posts(request, category_id):
         'category': category,
     }
     return render(request, 'category.html', context)
+
+
+# Blog views [detailed view of each blog]
+def blogs(request, slug):
+    return render(request, 'blogs.html')

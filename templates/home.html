@@ -79,7 +79,7 @@
                         </p>
 
                         <button>
-                            Read More
+                            <a href="{% url 'blogs' post.slug %}"> Read More</a>
                         </button>
 <!--                        <div class="latest-info" >-->
 <!--                            <span>{{post.author}}</span>&ndash;&gt;-->
@@ -243,8 +243,7 @@
 
                             </div>
 
-                            <button>
-                                Read More
+                            <button> <a href="{% url 'blogs' post.slug %}"> Read More</a>
                             </button>
 
                         </div>
@@ -299,8 +298,7 @@
 
                         </div>
 
-                        <button>
-                            Read More
+                        <button> <a href="{% url 'blogs' post.slug %}"> Read More</a>
                         </button>
 
                     </div>
