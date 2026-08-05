@@ -1,80 +1,5 @@
-<!DOCTYPE html>
-{% load static %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blogify | Modern Blog</title>
-
-    <!-- Google Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-
-    <!-- Stylesheet -->
-    <link rel="stylesheet" href="{% static 'css/home.css' %}">
-</head>
-
-<body>
-
-    <!-- ==========================
-            Navigation
-    =========================== -->
-
-    <nav>
-        <div class="logo">
-            Blogify
-        </div>
-
-        <ul class="nav-links">
-            <li>
-                <a href="{% url 'home' %}">Home</a>
-            </li>
-            {% for category in categories %}
-            <li><a href="#">{{category}}</a></li>
-<!--            <li><a href="#">Technology</a></li>-->
-<!--            <li><a href="#">Programming</a></li>-->
-<!--            <li><a href="#">Travel</a></li>-->
-<!--            <li><a href="#">Lifestyle</a></li>-->
-            {% endfor %}
-        </ul>
-
-        <div class="nav-actions">
-
-            <!-- Authentication Buttons -->
-            <div class="auth-buttons">
-                <a href="login.html" class="login-btn">
-                    Login
-                </a>
-
-                <a href="register.html" class="register-btn">
-                    Register
-                </a>
-            </div>
-
-            <!-- Search Box -->
-            <div class="search-box">
-                <input
-                    type="text"
-                    placeholder="Search articles...">
-
-                <button class="search-btn">
-                    <i class="fas fa-search"></i>
-                </button>
-            </div>
-
-            <!-- Dark Mode Button -->
-            <button class="theme-btn">
-                <i class="fas fa-moon"></i>
-            </button>
-
-        </div>
-    </nav>
+{% extends 'base.html' %}
+    {% block content %}
 
     <!-- ==========================
             Hero Section
@@ -156,6 +81,11 @@
                         <button>
                             Read More
                         </button>
+<!--                        <div class="latest-info" >-->
+<!--                            <span>{{post.author}}</span>&ndash;&gt;-->
+
+<!--                            <span>{{post.created_at | timesince}} ago</span>-->
+<!--                        </div>-->
 
                     </div>
 
@@ -175,105 +105,105 @@
                         <a href="#">View All</a>
                     </div>
 
-                    <div class="latest-grid">
-                        {% for post in featured_posts %}
-                            {% if not forloop.first %}
+<!--                    <div class="latest-grid">-->
+<!--                        {% for post in featured_posts %}-->
+<!--                            {% if not forloop.first %}-->
 
-                            <article class="latest-card">
+<!--                            <article class="latest-card">-->
 
-                                <img src="{{post.image.url}}" alt="">
+<!--                                <img src="{{post.image.url}}" alt="">-->
 
-                                <div class="latest-content">
+<!--                                <div class="latest-content">-->
 
-                                    <span class="category-tag">
-                                        {{post.category}}
-                                    </span>
+<!--                                    <span class="category-tag">-->
+<!--                                        {{post.category}}-->
+<!--                                    </span>-->
 
-                                    <h3>
-                                        {{post.title}}
-                                    </h3>
+<!--                                    <h3>-->
+<!--                                        {{post.title}}-->
+<!--                                    </h3>-->
 
-                                    <p>
-                                        {{post.short_description | truncatewords:10}}
-                                    </p>
+<!--                                    <p>-->
+<!--                                        {{post.short_description | truncatewords:10}}-->
+<!--                                    </p>-->
 
-                                    <div class="latest-info">
+<!--                                    <div class="latest-info">-->
 
-<!--                                        <span>{{post.author}}</span>-->
+<!--&lt;!&ndash;                                        <span>{{post.author}}</span>&ndash;&gt;-->
 
-                                        <span>{{post.created_at | timesince}} ago</span>
+<!--                                        <span>{{post.created_at | timesince}} ago</span>-->
 
-                                    </div>
-
-                                </div>
-
-                            </article>
-                            {% endif %}
-                        {% endfor %}
-
-<!--                        <article class="latest-card">-->
-
-<!--                            <img src="images/post2.jpg" alt="">-->
-
-<!--                            <div class="latest-content">-->
-
-<!--                                <span class="category-tag">-->
-<!--                                    Programming-->
-<!--                                </span>-->
-
-<!--                                <h3>-->
-<!--                                    Mastering CSS Grid in 2026-->
-<!--                                </h3>-->
-
-<!--                                <p>-->
-<!--                                    Learn the modern layout system every frontend developer-->
-<!--                                    should know.-->
-<!--                                </p>-->
-
-<!--                                <div class="latest-info">-->
-
-<!--                                    <span>Mary Jane</span>-->
-
-<!--                                    <span>6 min read</span>-->
+<!--                                    </div>-->
 
 <!--                                </div>-->
 
-<!--                            </div>-->
+<!--                            </article>-->
+<!--                            {% endif %}-->
+<!--                        {% endfor %}-->
 
-<!--                        </article>-->
+<!--&lt;!&ndash;                        <article class="latest-card">&ndash;&gt;-->
 
-<!--                        <article class="latest-card">-->
+<!--&lt;!&ndash;                            <img src="images/post2.jpg" alt="">&ndash;&gt;-->
 
-<!--                            <img src="images/post3.jpg" alt="">-->
+<!--&lt;!&ndash;                            <div class="latest-content">&ndash;&gt;-->
 
-<!--                            <div class="latest-content">-->
+<!--&lt;!&ndash;                                <span class="category-tag">&ndash;&gt;-->
+<!--&lt;!&ndash;                                    Programming&ndash;&gt;-->
+<!--&lt;!&ndash;                                </span>&ndash;&gt;-->
 
-<!--                                <span class="category-tag">-->
-<!--                                    AI-->
-<!--                                </span>-->
+<!--&lt;!&ndash;                                <h3>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    Mastering CSS Grid in 2026&ndash;&gt;-->
+<!--&lt;!&ndash;                                </h3>&ndash;&gt;-->
 
-<!--                                <h3>-->
-<!--                                    Top 10 Machine Learning Libraries-->
-<!--                                </h3>-->
+<!--&lt;!&ndash;                                <p>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    Learn the modern layout system every frontend developer&ndash;&gt;-->
+<!--&lt;!&ndash;                                    should know.&ndash;&gt;-->
+<!--&lt;!&ndash;                                </p>&ndash;&gt;-->
 
-<!--                                <p>-->
-<!--                                    Discover the best Python libraries for building-->
-<!--                                    intelligent applications.-->
-<!--                                </p>-->
+<!--&lt;!&ndash;                                <div class="latest-info">&ndash;&gt;-->
 
-<!--                                <div class="latest-info">-->
+<!--&lt;!&ndash;                                    <span>Mary Jane</span>&ndash;&gt;-->
 
-<!--                                    <span>David</span>-->
+<!--&lt;!&ndash;                                    <span>6 min read</span>&ndash;&gt;-->
 
-<!--                                    <span>8 min read</span>-->
+<!--&lt;!&ndash;                                </div>&ndash;&gt;-->
 
-<!--                                </div>-->
+<!--&lt;!&ndash;                            </div>&ndash;&gt;-->
 
-<!--                            </div>-->
+<!--&lt;!&ndash;                        </article>&ndash;&gt;-->
 
-<!--                        </article>-->
+<!--&lt;!&ndash;                        <article class="latest-card">&ndash;&gt;-->
 
-                    </div>
+<!--&lt;!&ndash;                            <img src="images/post3.jpg" alt="">&ndash;&gt;-->
+
+<!--&lt;!&ndash;                            <div class="latest-content">&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                <span class="category-tag">&ndash;&gt;-->
+<!--&lt;!&ndash;                                    AI&ndash;&gt;-->
+<!--&lt;!&ndash;                                </span>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                <h3>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    Top 10 Machine Learning Libraries&ndash;&gt;-->
+<!--&lt;!&ndash;                                </h3>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                <p>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    Discover the best Python libraries for building&ndash;&gt;-->
+<!--&lt;!&ndash;                                    intelligent applications.&ndash;&gt;-->
+<!--&lt;!&ndash;                                </p>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                <div class="latest-info">&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                    <span>David</span>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                    <span>8 min read</span>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                            </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                        </article>&ndash;&gt;-->
+
+<!--                    </div>-->
 
                 </section>
             <!-- Blog Cards -->
@@ -281,70 +211,85 @@
             <section class="blog-grid">
 
                 <!-- Card -->
+                {% for post in featured_posts %}
+                    {% if not forloop.first %}
+                    <article class="card">
 
-                <article class="card">
+                        <img
+                            src="{{ post.image.url }}"
+                            alt="Python">
 
-                    <img
-                        src="https://images.unsplash.com/photo-1518770660439-4636190af475"
-                        alt="Python">
+                        <div class="content">
 
-                    <div class="content">
+                            <h3>
+                                {{post.title}}
+                            </h3>
 
-                        <h3>
-                            Learn Python in 30 Days
-                        </h3>
+                            <p>
+                                {{post.short_description}}
+                            </p>
 
-                        <p>
-                            Master Python programming from beginner
-                            to advanced.
-                        </p>
+                            <div class="info">
 
-                        <div class="info">
+                                <span>
+                                    <i class="fa-solid fa-user"></i>
+                                    {{post.author}}
+                                </span>
 
-                            <span>
-                                <i class="fa-solid fa-user"></i>
-                                John Doe
-                            </span>
+                                <span>
+                                    <i class="fa-solid fa-clock"></i>
+                                    {{post.created_at | timesince}} ago
+                                </span>
 
-                            <span>
-                                <i class="fa-solid fa-clock"></i>
-                                5 min read
-                            </span>
+                            </div>
+
+                            <button>
+                                Read More
+                            </button>
 
                         </div>
 
-                        <button>
-                            Read More
-                        </button>
+                    </article>
+                    {% endif %}
+                {% endfor %}
+            </section>
 
-                    </div>
 
-                </article>
+<!--==========================================Blog Posts=======================================================-->
+<!--===========================================================================================================-->
+            <!-- Blog posts -->
+            <section class="latest-posts">
 
-                <!-- Card -->
+                <div class="section-title">
+                    <h2>Blog Posts</h2>
+                    <a href="#">View All</a>
+                </div>
+            </section>
 
+            <section class="blog-grid">
+
+                {% for post in not_featured_posts %}
                 <article class="card">
 
                     <img
-                        src="https://images.unsplash.com/photo-1498050108023-c5249f4df085"
+                        src="{{post.image.url}}"
                         alt="JavaScript">
 
                     <div class="content">
 
                         <h3>
-                            Modern JavaScript Tips
+                            {{post.title}}
                         </h3>
 
                         <p>
-                            Improve your coding skills with ES2026
-                            features and best practices.
+                            {{post.short_description}}
                         </p>
 
                         <div class="info">
 
                             <span>
                                 <i class="fa-solid fa-user"></i>
-                                David Smith
+                                {{post.author}}
                             </span>
 
                             <span>
@@ -361,47 +306,48 @@
                     </div>
 
                 </article>
+                {% endfor %}
 
                 <!-- Card -->
 
-                <article class="card">
+<!--                <article class="card">-->
 
-                    <img
-                        src="https://images.unsplash.com/photo-1516321497487-e288fb19713f"
-                        alt="Web Design">
+<!--                    <img-->
+<!--                        src="https://images.unsplash.com/photo-1516321497487-e288fb19713f"-->
+<!--                        alt="Web Design">-->
 
-                    <div class="content">
+<!--                    <div class="content">-->
 
-                        <h3>
-                            UI Design Trends
-                        </h3>
+<!--                        <h3>-->
+<!--                            UI Design Trends-->
+<!--                        </h3>-->
 
-                        <p>
-                            Discover beautiful interfaces that are
-                            dominating the web in 2026.
-                        </p>
+<!--                        <p>-->
+<!--                            Discover beautiful interfaces that are-->
+<!--                            dominating the web in 2026.-->
+<!--                        </p>-->
 
-                        <div class="info">
+<!--                        <div class="info">-->
 
-                            <span>
-                                <i class="fa-solid fa-user"></i>
-                                Mary Johnson
-                            </span>
+<!--                            <span>-->
+<!--                                <i class="fa-solid fa-user"></i>-->
+<!--                                Mary Johnson-->
+<!--                            </span>-->
 
-                            <span>
-                                <i class="fa-solid fa-clock"></i>
-                                7 min read
-                            </span>
+<!--                            <span>-->
+<!--                                <i class="fa-solid fa-clock"></i>-->
+<!--                                7 min read-->
+<!--                            </span>-->
 
-                        </div>
+<!--                        </div>-->
 
-                        <button>
-                            Read More
-                        </button>
+<!--                        <button>-->
+<!--                            Read More-->
+<!--                        </button>-->
 
-                    </div>
+<!--                    </div>-->
 
-                </article>
+<!--                </article>-->
 
             </section>
 
@@ -461,35 +407,4 @@
             Footer
     =========================== -->
 
-    <footer>
-
-        <h2>Blogify</h2>
-
-        <p>
-            Made with ❤️ for developers, designers, and creators.
-        </p>
-
-        <div class="socials">
-
-            <a href="#">
-                <i class="fab fa-facebook"></i>
-            </a>
-
-            <a href="#">
-                <i class="fab fa-twitter"></i>
-            </a>
-
-            <a href="#">
-                <i class="fab fa-instagram"></i>
-            </a>
-
-            <a href="#">
-                <i class="fab fa-linkedin"></i>
-            </a>
-
-        </div>
-
-    </footer>
-
-</body>
-</html>
+    {% endblock %}
