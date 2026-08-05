@@ -221,78 +221,80 @@
     =========================================== -->
 
     <section class="featured-category">
-        {% for post in posts %}
-            {% if forloop.first %}
+        {% if posts %}
+            {% for post in posts %}
+                {% if forloop.first %}
 
-            <div class="featured-image">
+                <div class="featured-image">
 
-                <img src="{{ post.image.url }}"
-                     alt="Featured {{category}} Article">
-
-            </div>
-
-            <div class="featured-details">
-
-                <span class="featured-tag">
-
-                    Featured Story
-
-                </span>
-
-                <h2>
-
-                    {{post.title}}
-
-                </h2>
-
-                <p>
-
-                    {{post.short_description}}
-
-                </p>
-
-                <div class="featured-meta">
-
-                    <span>
-
-                        <i class="fas fa-user"></i>
-
-                        {{post.author}}
-
-                    </span>
-
-                    <span>
-
-                        <i class="fas fa-calendar"></i>
-
-                        {{post.created_at | timesince}} ago
-
-                    </span>
-
-                    <span>
-
-                        <i class="fas fa-clock"></i>
-
-                        8 min read
-
-                    </span>
+                    <img src="{{ post.image.url }}"
+                         alt="Featured {{category}} Article">
 
                 </div>
 
-                <a href="post.html"
-                   class="read-more-btn">
+                <div class="featured-details">
 
-                    Read Full Article
+                    <span class="featured-tag">
 
-                    <i class="fas fa-arrow-right"></i>
+                        Featured Story
 
-                </a>
+                    </span>
 
-            </div>
-            {% else %}
+                    <h2>
+
+                        {{post.title}}
+
+                    </h2>
+
+                    <p>
+
+                        {{post.short_description}}
+
+                    </p>
+
+                    <div class="featured-meta">
+
+                        <span>
+
+                            <i class="fas fa-user"></i>
+
+                            {{post.author}}
+
+                        </span>
+
+                        <span>
+
+                            <i class="fas fa-calendar"></i>
+
+                            {{post.created_at | timesince}} ago
+
+                        </span>
+
+                        <span>
+
+                            <i class="fas fa-clock"></i>
+
+                            8 min read
+
+                        </span>
+
+                    </div>
+
+                    <a href="post.html"
+                       class="read-more-btn">
+
+                        Read Full Article
+
+                        <i class="fas fa-arrow-right"></i>
+
+                    </a>
+
+                </div>
+                {% endif %}
+            {% endfor %}
+        {% else %}
             <h2> No Post found for this category.</h2>
-            {% endif %}
-        {% endfor %}
+        {% endif %}
 
     </section>
 
@@ -559,28 +561,6 @@
                     <a href="#">Cloud</a>
 
                 </div>
-
-            </div>
-
-            <!-- Newsletter -->
-
-            <div class="sidebar-widget newsletter-widget">
-
-                <h3>Newsletter</h3>
-
-                <p>
-                    Subscribe to receive our latest articles every week.
-                </p>
-
-                <input
-                    type="email"
-                    placeholder="Enter your email">
-
-                <button>
-
-                    Subscribe
-
-                </button>
 
             </div>
 
@@ -888,16 +868,17 @@
                 </h3>
 
                 <ul>
-
+                    {% for category in categories %}
                     <li><a href="#">{{category}}</a></li>
+                    {% endfor %}
 
-                    <li><a href="#">Programming</a></li>
+<!--                    <li><a href="#">Programming</a></li>-->
 
-                    <li><a href="#">Artificial Intelligence</a></li>
+<!--                    <li><a href="#">Artificial Intelligence</a></li>-->
 
-                    <li><a href="#">Cyber Security</a></li>
+<!--                    <li><a href="#">Cyber Security</a></li>-->
 
-                    <li><a href="#">Business</a></li>
+<!--                    <li><a href="#">Business</a></li>-->
 
                 </ul>
 
