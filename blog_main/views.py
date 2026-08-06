@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from blogs.models import Category, Blog
-
+from about.models import About
 
 
 # Homepage...
@@ -14,9 +14,12 @@ def home(request):
     not_featured_posts = Blog.objects.filter(is_featured=False, status='Published').order_by('-updated_at')
     # Posts
     posts = Blog.objects.filter(is_featured=False, status='Published')
+    # Get About Us
+    about = About.objects.get()
 
     context = {
         'featured_posts': featured_posts,
         'not_featured_posts': not_featured_posts,
+        'about': about,
     }
     return render(request, 'home.html', context=context)

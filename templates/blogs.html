@@ -102,14 +102,21 @@
             =========================== -->
 
             <aside class="share-bar">
+                {% if social_links %}
+                    {% for link in social_links %}
 
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="{{link.social_link}}"><i class="fab fa-{{link.social_platform}}"></i></a>
 
-                <a href="#"><i class="fab fa-x-twitter"></i></a>
+                    {% endfor %}
 
-                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+<!--                    <a href="#"><i class="fab fa-x-twitter"></i></a>-->
 
-                <a href="#"><i class="fas fa-link"></i></a>
+<!--                    <a href="#"><i class="fab fa-linkedin"></i></a>-->
+
+<!--                    <a href="#"><i class="fab fa-github"></i></a>-->
+
+<!--                    <a href="#"><i class="fas fa-link"></i></a>-->
+                {% endif %}
 
             </aside>
 
@@ -268,7 +275,7 @@
 
         <div class="blog-grid">
 
-            {% for blog in related_blogs %}
+
             <article class="card">
 
                 <img src="{{blog.image.url}}">
@@ -290,7 +297,7 @@
                 </div>
 
             </article>
-            {% endfor %}
+
 
             <article class="card">
 

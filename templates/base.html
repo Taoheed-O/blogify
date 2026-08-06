@@ -61,13 +61,16 @@
 
             <!-- Search Box -->
             <div class="search-box">
-                <input
+                <form action="{% url 'search_blogs' %}" method="get">
+                    <input
                     type="text"
+                    name="keyword"
                     placeholder="Search articles...">
 
-                <button class="search-btn">
-                    <i class="fas fa-search"></i>
-                </button>
+                    <button class="search-btn" type="submit" id="search-button">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </form>
             </div>
 
             <!-- Dark Mode Button -->
@@ -123,7 +126,7 @@
 
                     <li>
 
-                        <a href="index.html">
+                        <a href="{% url 'home' %}">
 
                             Home
 
@@ -200,25 +203,14 @@
 
                 <div class="social-icons">
 
-                    <a href="#">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
+                    {% if social_links %}
+                        {% for link in social_links %}
 
-                    <a href="#">
-                        <i class="fab fa-twitter"></i>
-                    </a>
+                        <a href="{{link.social_link}}"><i class="fab fa-{{link.social_platform}}"></i></a>
 
-                    <a href="#">
-                        <i class="fab fa-instagram"></i>
-                    </a>
+                        {% endfor %}
+                    {% endif %}
 
-                    <a href="#">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-
-                    <a href="#">
-                        <i class="fab fa-youtube"></i>
-                    </a>
 
                 </div>
 

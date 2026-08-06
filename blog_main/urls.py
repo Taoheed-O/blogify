@@ -28,6 +28,8 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('category/', include('blogs.urls')),
     path('<slug:slug>/', blogViews.blogs, name='blogs'),
+    # search
+    path('blogs/search/', blogViews.search_blogs, name='search_blogs'),
 ]
 
 # Url patterns + image urls
