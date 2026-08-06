@@ -12,20 +12,19 @@
 
             <span class="post-category">
 
-                Technology
+                {{blog_page.category}}
 
             </span>
 
             <h1>
 
-                Artificial Intelligence is Revolutionizing Modern Software Engineering
+                {{blog_page.title}}
 
             </h1>
 
             <p class="post-subtitle">
 
-                Discover how artificial intelligence is transforming software
-                development, automation, testing, deployment and productivity.
+                {{blog_page.short_description}}
 
             </p>
 
@@ -33,13 +32,13 @@
 
                 <div class="author">
 
-                    <img src="/static/images/avatar.jpg" alt="Author">
+<!--                    <img src="/static/images/avatar.jpg" alt="Author">-->
 
                     <div>
 
-                        <h4>John Doe</h4>
+                        <h4>Author: {{blog_page.author}}</h4>
 
-                        <span>Senior Software Engineer</span>
+<!--                        <span>Senior Software Engineer</span>-->
 
                     </div>
 
@@ -51,7 +50,7 @@
 
                         <i class="fa-regular fa-calendar"></i>
 
-                        August 5, 2026
+                        {{blog_page.created_at}}
 
                     </span>
 
@@ -85,7 +84,7 @@
 
     <section class="featured-image">
 
-        <img src="/static/images/post-banner.jpg"
+        <img src="{{ blog_page.image.url }}"
              alt="Blog Image">
 
     </section>
@@ -122,68 +121,65 @@
 
                 <p class="lead">
 
-                    Artificial Intelligence has rapidly become one of the most
-                    influential technologies shaping software engineering.
-                    Developers now rely on AI tools for code generation,
-                    debugging, testing and documentation.
+                    {{blog_page.body}}
 
                 </p>
 
-                <h2>
+<!--                <h2>-->
 
-                    Why AI Matters
+<!--                    Why AI Matters-->
 
-                </h2>
+<!--                </h2>-->
 
-                <p>
+<!--                <p>-->
 
-                    Modern software projects demand speed, quality and
-                    scalability. AI assists developers by automating repetitive
-                    tasks while improving code quality.
+<!--                    Modern software projects demand speed, quality and-->
+<!--                    scalability. AI assists developers by automating repetitive-->
+<!--                    tasks while improving code quality.-->
 
-                </p>
+<!--                </p>-->
 
-                <blockquote>
+<!--                <blockquote>-->
 
-                    "Artificial Intelligence isn't replacing developers;
-                    it's making great developers even more productive."
+<!--                    "Artificial Intelligence isn't replacing developers;-->
+<!--                    it's making great developers even more productive."-->
 
-                </blockquote>
+<!--                </blockquote>-->
 
-                <h2>
+<!--                <h2>-->
 
-                    AI in Development
+<!--                    AI in Development-->
 
-                </h2>
+<!--                </h2>-->
 
-                <p>
+<!--                <p>-->
 
-                    From GitHub Copilot to intelligent testing frameworks,
-                    developers now spend more time solving business problems
-                    instead of writing repetitive code.
+<!--                    From GitHub Copilot to intelligent testing frameworks,-->
+<!--                    developers now spend more time solving business problems-->
+<!--                    instead of writing repetitive code.-->
 
-                </p>
+<!--                </p>-->
 
-                <img src="/static/images/post-content.jpg"
-                     alt="Content Image">
+<!--                <img src="/static/images/post-content.jpg"-->
+<!--                     alt="Content Image">-->
 
-                <h2>
+<!--                <h2>-->
 
-                    Example
+<!--                    Example-->
 
-                </h2>
+<!--                </h2>-->
 
-                <pre><code>
-    def greet(name):
-        return f"Hello {name}"
-                </code></pre>
+<!--                <pre><code>-->
+<!--    def greet(name):-->
+<!--        return f"Hello {name}"-->
+<!--                </code></pre>-->
 
-                <p>
+<!--                <p>-->
 
-                    AI can generate, optimize and document code snippets
-                    similar to the example above.
+<!--                    AI can generate, optimize and document code snippets-->
+<!--                    similar to the example above.-->
 
-                </p>
+<!--                </p>-->
 
                 <!-- Tags -->
 
@@ -219,7 +215,7 @@
 
             <h3>
 
-                John Doe
+                {{blog_page.author}}
 
             </h3>
 
@@ -272,15 +268,16 @@
 
         <div class="blog-grid">
 
+            {% for blog in related_blogs %}
             <article class="card">
 
-                <img src="/static/images/post1.jpg">
+                <img src="{{blog.image.url}}">
 
                 <div class="card-content">
 
                     <h3>
 
-                        Top Python Libraries in 2026
+                        {{blog.title}}
 
                     </h3>
 
@@ -293,6 +290,7 @@
                 </div>
 
             </article>
+            {% endfor %}
 
             <article class="card">
 
