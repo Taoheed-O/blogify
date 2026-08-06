@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 from .models import Blog, Category
 # Create your views here.
@@ -17,4 +17,6 @@ def categorical_posts(request, category_id):
 
 # Blog views [detailed view of each blog]
 def blogs(request, slug):
-    return render(request, 'blogs.html')
+    blog_page = get_object_or_404(Blog, slug=slug, status = 'Published')
+    context = {'blog_page': blog_page}
+    return render(request, 'blogs.html', context)
