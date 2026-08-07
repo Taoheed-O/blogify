@@ -3183,3 +3183,394 @@ code{
     }
 
 }
+
+/*===================================== SEARCH RESULTS ==================================================================*/
+/*=======================================================================================================================*/
+
+/* ==========================================
+        SEARCH HEADER
+========================================== */
+
+.search-header {
+    text-align: center;
+    margin-bottom: 55px;
+}
+
+.search-label {
+    display: inline-block;
+    padding: 7px 18px;
+    margin-bottom: 15px;
+
+    background: rgba(255, 101, 132, 0.15);
+    color: #FF6584;
+
+    border-radius: 30px;
+
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.search-header h1 {
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+.search-header p {
+    color: var(--gray);
+}
+
+
+/* ==========================================
+        SEARCH FORM
+========================================== */
+
+.search-form {
+    max-width: 700px;
+    margin: 30px auto 0;
+
+    display: flex;
+
+    background: var(--white);
+
+    border: 1px solid var(--border);
+
+    border-radius: 40px;
+
+    padding: 6px;
+
+    box-shadow: var(--shadow);
+}
+
+.search-form input {
+    flex: 1;
+
+    border: none;
+    background: transparent;
+
+    padding: 14px 20px;
+
+    font-size: 16px;
+}
+
+.search-form button {
+    border: none;
+
+    padding: 13px 25px;
+
+    border-radius: 30px;
+
+    background: var(--primary);
+    color: white;
+
+    font-weight: 600;
+
+    transition: var(--transition);
+}
+
+.search-form button:hover {
+    background: var(--secondary);
+}
+
+
+/* ==========================================
+        SEARCH RESULTS
+========================================== */
+
+.search-results {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+
+/* ==========================================
+        SEARCH CARD
+========================================== */
+
+.search-card {
+    display: grid;
+
+    grid-template-columns: 250px 1fr;
+
+    gap: 25px;
+
+    padding: 15px;
+
+    background: var(--white);
+
+    border-radius: 18px;
+
+    box-shadow: var(--shadow);
+
+    transition: var(--transition);
+}
+
+.search-card:hover {
+    transform: translateY(-5px);
+}
+
+
+/* ==========================================
+        FIXED IMAGE
+========================================== */
+
+.search-image {
+    display: block;
+
+    width: 250px;
+    height: 180px;
+
+    overflow: hidden;
+
+    border-radius: 14px;
+}
+
+.search-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: transform .4s ease;
+}
+
+.search-card:hover .search-image img {
+    transform: scale(1.05);
+}
+
+
+/* ==========================================
+        CARD CONTENT
+========================================== */
+
+.search-card-content {
+    padding: 8px 10px;
+}
+
+.search-category {
+    display: inline-block;
+
+    color: var(--secondary);
+
+    font-size: 13px;
+    font-weight: 600;
+
+    margin-bottom: 8px;
+}
+
+.search-card h2 {
+    font-size: 24px;
+    line-height: 1.35;
+
+    margin-bottom: 10px;
+}
+
+.search-card h2 a {
+    transition: var(--transition);
+}
+
+.search-card h2 a:hover {
+    color: var(--primary);
+}
+
+.search-card p {
+    color: var(--gray);
+
+    margin-bottom: 15px;
+
+    line-height: 1.6;
+}
+
+
+/* ==========================================
+        META
+========================================== */
+
+.search-meta {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 18px;
+
+    color: #888;
+
+    font-size: 13px;
+}
+
+.search-meta span {
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+}
+
+
+/* ==========================================
+        PAGINATION
+========================================== */
+
+.search-pagination {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    margin-top: 60px;
+}
+
+.page-number,
+.page-btn {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-width: 42px;
+    height: 42px;
+
+    padding: 0 15px;
+
+    border-radius: 25px;
+
+    background: var(--white);
+
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .06);
+
+    transition: var(--transition);
+}
+
+.page-number.active {
+    background: var(--primary);
+    color: white;
+}
+
+.page-number:hover,
+.page-btn:hover {
+    background: var(--secondary);
+    color: white;
+}
+
+
+/* ==========================================
+        NO RESULTS
+========================================== */
+
+.no-results {
+    text-align: center;
+
+    padding: 80px 20px;
+
+    background: var(--white);
+
+    border-radius: 20px;
+
+    box-shadow: var(--shadow);
+}
+
+.no-results-icon {
+    width: 80px;
+    height: 80px;
+
+    margin: 0 auto 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: rgba(108, 99, 255, .1);
+
+    color: var(--primary);
+
+    font-size: 30px;
+}
+
+.no-results h2 {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.no-results p {
+    color: var(--gray);
+    margin-bottom: 25px;
+}
+
+.back-home {
+    display: inline-block;
+
+    padding: 12px 25px;
+
+    border-radius: 30px;
+
+    background: var(--primary);
+    color: white;
+
+    transition: var(--transition);
+}
+
+.back-home:hover {
+    background: var(--secondary);
+}
+
+
+/* ==========================================
+        RESPONSIVE
+========================================== */
+
+@media (max-width: 768px) {
+
+    .search-header h1 {
+        font-size: 32px;
+    }
+
+    .search-card {
+        grid-template-columns: 1fr;
+    }
+
+    .search-image {
+        width: 100%;
+        height: 220px;
+    }
+
+    .search-card-content {
+        padding: 10px;
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    .search-page {
+        width: 92%;
+        margin-top: 45px;
+    }
+
+    .search-form {
+        border-radius: 15px;
+    }
+
+    .search-form button {
+        padding: 12px 18px;
+    }
+
+    .search-form button i {
+        margin-right: 0;
+    }
+
+    .search-card h2 {
+        font-size: 21px;
+    }
+
+    .search-meta {
+        gap: 10px;
+    }
+
+}

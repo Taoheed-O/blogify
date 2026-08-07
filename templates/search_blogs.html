@@ -2,6 +2,220 @@
 
 {% block content %}
 
-{{blogs}}
+<section class="search-page">
+
+
+<!-- ================================
+        Search Header
+================================= -->
+
+<!--<div class="search-header">-->
+
+<!--    <span class="search-label">-->
+<!--        Search Results-->
+<!--    </span>-->
+
+<!--    <h1>-->
+<!--        Search for "{{ query }}"-->
+<!--    </h1>-->
+
+<!--    <p>-->
+<!--        {% if posts %}-->
+<!--            We found {{ posts|length }} article{{ posts|length|pluralize }} matching your search.-->
+<!--        {% else %}-->
+<!--            We couldn't find any articles matching your search.-->
+<!--        {% endif %}-->
+<!--    </p>-->
+
+<!--    &lt;!&ndash; Search Form &ndash;&gt;-->
+
+<!--    <form action="#" method="GET" class="search-form">-->
+
+<!--        <input-->
+<!--            type="search"-->
+<!--            name="q"-->
+<!--            value="{{ query }}"-->
+<!--            placeholder="Search articles..."-->
+<!--            aria-label="Search articles"-->
+<!--            required-->
+<!--        >-->
+
+<!--        <button type="submit">-->
+<!--            <i class="fas fa-search"></i>-->
+<!--            Search-->
+<!--        </button>-->
+
+<!--    </form>-->
+
+<!--</div>-->
+
+
+<!-- ================================
+        Search Results
+================================= -->
+
+{% if blogs %}
+
+    <div class="search-results">
+
+        {% for blog in blogs %}
+
+            <article class="search-card">
+
+                <!-- Post Image -->
+
+                <a href="#"
+                   class="search-image">
+
+                    <img
+                        src="{{ blog.image.url }}"
+                        alt="{{ blog.title }}"
+                    >
+
+                </a>
+
+
+                <!-- Post Information -->
+
+                <div class="search-card-content">
+
+                    <span class="search-category">
+                        {{ blog.category.name }}
+                    </span>
+
+                    <h2>
+
+                        <a href="#">
+                            {{ blog.title }}
+                        </a>
+
+                    </h2>
+
+                    <p>
+                        {{ blog.short_description }}
+                    </p>
+
+
+                    <div class="search-meta">
+
+                        <span>
+                            <i class="fas fa-user"></i>
+                            {{ blog.author }}
+                        </span>
+
+                        <span>
+                            <i class="far fa-calendar"></i>
+                            {{ blog.created_at|date:"M d, Y" }}
+                        </span>
+
+<!--                        {% if post.reading_time %}-->
+<!--                            <span>-->
+<!--                                <i class="far fa-clock"></i>-->
+<!--                                {{ post.reading_time }} min read-->
+<!--                            </span>-->
+<!--                        {% endif %}-->
+
+                    </div>
+
+                </div>
+
+            </article>
+
+        {% endfor %}
+
+    </div>
+
+
+    <!-- ================================
+            Pagination
+    ================================= -->
+
+<!--    {% if posts.has_other_pages %}-->
+
+<!--        <div class="search-pagination">-->
+
+<!--            {% if posts.has_previous %}-->
+
+<!--                <a href="?q={{ query }}&page={{ posts.previous_page_number }}"-->
+<!--                   class="page-btn">-->
+
+<!--                    <i class="fas fa-angle-left"></i>-->
+<!--                    Previous-->
+
+<!--                </a>-->
+
+<!--            {% endif %}-->
+
+
+<!--            {% for number in posts.paginator.page_range %}-->
+
+<!--                {% if posts.number == number %}-->
+
+<!--                    <span class="page-number active">-->
+<!--                        {{ number }}-->
+<!--                    </span>-->
+
+<!--                {% else %}-->
+
+<!--                    <a href="?q={{ query }}&page={{ number }}"-->
+<!--                       class="page-number">-->
+
+<!--                        {{ number }}-->
+
+<!--                    </a>-->
+
+<!--                {% endif %}-->
+
+<!--            {% endfor %}-->
+
+
+<!--            {% if posts.has_next %}-->
+
+<!--                <a href="?q={{ query }}&page={{ posts.next_page_number }}"-->
+<!--                   class="page-btn">-->
+
+<!--                    Next-->
+<!--                    <i class="fas fa-angle-right"></i>-->
+
+<!--                </a>-->
+
+<!--            {% endif %}-->
+
+<!--        </div>-->
+
+<!--    {% endif %}-->
+
+
+{% else %}
+
+    <!-- ================================
+            No Results
+    ================================= -->
+
+    <div class="no-results">
+
+        <div class="no-results-icon">
+
+            <i class="fas fa-search"></i>
+
+        </div>
+
+        <h2>
+            No articles found
+        </h2>
+
+        <p>
+            Try searching with a different keyword or phrase.
+        </p>
+
+        <a href="{% url 'home' %}" class="back-home">
+            Back to Home
+        </a>
+
+    </div>
+
+{% endif %}
+
+</section>
 
 {% endblock %}
