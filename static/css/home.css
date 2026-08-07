@@ -3574,3 +3574,181 @@ code{
     }
 
 }
+
+/*============================================ REGISTRATION PAGE ========================================================*/
+/*=======================================================================================================================*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*body{*/
+/*    font-family: "Poppins", Arial, sans-serif;*/
+
+/*    background:*/
+/*        linear-gradient(*/
+/*            rgba(15, 23, 42, .75),*/
+/*            rgba(15, 23, 42, .85)*/
+/*        ),*/
+/*        url("https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1500&q=80");*/
+
+/*    background-size: cover;*/
+/*    background-position: center;*/
+
+/*    min-height: 100vh;*/
+/*}*/
+
+
+/* ================================
+        REGISTER PAGE
+================================ */
+
+.register-page {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 30px;
+}
+
+
+/* ================================
+        REGISTER CARD
+================================ */
+
+.register-card {
+    width: 100%;
+    max-width: 430px;
+
+    padding: 40px;
+
+    background: rgba(255, 255, 255, .97);
+
+    border-radius: 20px;
+
+    box-shadow: 0 20px 50px rgba(0, 0, 0, .25);
+}
+
+.register-card h1 {
+    text-align: center;
+
+    font-size: 32px;
+
+    color: #222831;
+
+    margin-bottom: 8px;
+}
+
+.register-card > p {
+    text-align: center;
+
+    color: #777;
+
+    margin-bottom: 30px;
+}
+
+
+/* ================================
+        FORM
+================================ */
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    color: #333;
+}
+
+.form-group input {
+    width: 100%;
+
+    padding: 13px 15px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 10px;
+
+    outline: none;
+
+    font-size: 15px;
+
+    transition: .3s;
+}
+
+.form-group input:focus {
+    border-color: #6C63FF;
+
+    box-shadow:
+        0 0 0 3px rgba(108, 99, 255, .12);
+}
+
+
+/* ================================
+        REGISTER BUTTON
+================================ */
+
+.register-card button {
+    width: 100%;
+
+    padding: 14px;
+
+    border: none;
+
+    border-radius: 30px;
+
+    background: #6C63FF;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: .3s;
+}
+
+.register-card button:hover {
+    background: #FF6584;
+
+    transform: translateY(-2px);
+}
+
+
+/* ================================
+        LOGIN LINK
+================================ */
+
+.login-link {
+    margin-top: 22px;
+
+    text-align: center;
+
+    color: #777;
+}
+
+.login-link a {
+    color: #6C63FF;
+
+    font-weight: 600;
+
+    text-decoration: none;
+}
+
+.login-link a:hover {
+    color: #FF6584;
+}
