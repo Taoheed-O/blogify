@@ -41,3 +41,8 @@ def register(request):
         'form': form,
     }
     return render(request, 'register.html', context=context)
+
+
+# Login page
+def login(request):
+    return render(request, 'login.html')

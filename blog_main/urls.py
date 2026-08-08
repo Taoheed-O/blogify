@@ -32,6 +32,7 @@ urlpatterns = [
     path('blogs/search/', blogViews.search_blogs, name='search_blogs'),
     # registration
     path('blogs/register/', views.register, name='register'),
+    path('blogs/login/', views.login, name='login')
 ]
 
 # Url patterns + image urls
