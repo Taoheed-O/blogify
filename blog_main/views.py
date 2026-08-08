@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.contrib.auth.forms import AuthenticationForm
 from blogs.models import Category, Blog
 from about.models import About
 from .forms import RegistrationForm
@@ -45,4 +45,6 @@ def register(request):
 
 # Login page
 def login(request):
-    return render(request, 'login.html')
+    form =  AuthenticationForm()
+    context = {'form': form}
+    return render(request, 'login.html',  context=context)
