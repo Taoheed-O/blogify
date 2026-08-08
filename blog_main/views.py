@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib import auth
 from django.contrib.auth.forms import AuthenticationForm
 from blogs.models import Category, Blog
 from about.models import About
@@ -45,6 +46,22 @@ def register(request):
 
 # Login page
 def login(request):
-    form =  AuthenticationForm()
+    if request.method == "POST":
+        form = AuthenticationForm(request, request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = auth.authenticate(username=username, password=password)
+            if user is not None:
+                auth.login(request, user)
+            return redirect('home')
+    form = AuthenticationForm()
+
     context = {'form': form}
     return render(request, 'login.html',  context=context)
+
+
+# Logout
+def logout(request):
+    auth.logout(request)
+    return redirect('home')

@@ -49,6 +49,7 @@
         <div class="nav-actions">
 
             <!-- Authentication Buttons -->
+            {% if not user.is_authenticated %}
             <div class="auth-buttons">
                 <a href="{% url 'login' %}" class="login-btn">
                     Login
@@ -58,6 +59,13 @@
                     Register
                 </a>
             </div>
+            {% else %}
+
+            <div class="nav-links"> Welcome {{ user }}</div>
+            <div class="auth-buttons">
+                <a href="{% url 'logout' %}" class="login-btn"> Logout </a>
+            </div>
+            {% endif %}
 
             <!-- Search Box -->
             <div class="search-box">

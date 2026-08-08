@@ -3,7 +3,7 @@
 {% block content %}
 
 {% load crispy_forms_tags %}
-<main class="register-page">
+<main class="login-page">
 
     <div class="register-card">
 
@@ -25,7 +25,7 @@
 
             Already have an account?
 
-            <a href="login.html">
+            <a href="{% url 'login' %}">
                 Login
             </a>
 
