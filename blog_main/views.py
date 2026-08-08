@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from blogs.models import Category, Blog
 from about.models import About
@@ -28,7 +28,15 @@ def home(request):
 
 # Registration page
 def register(request):
-    form = RegistrationForm()
+    if request.method == "POST":
+        form = RegistrationForm(request.POST)
+        if form.is_valid():
+            return redirect('register')
+        else:
+            print(form.errors)
+    else:
+        form = RegistrationForm()
+
     context = {
         'form': form,
     }

@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'crispy_forms',
+    'crispy_bootstrap4',
     'blogs',
     'about',
 ]
@@ -65,8 +67,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'blogs.context_processors.get_categories',
                 'blogs.context_processors.get_social_links',
-                'crispy_forms',
-                'crispy_bootstrap4',
+                # 'blogs.context_processors.get_related_blogs',
             ],
         },
     },
