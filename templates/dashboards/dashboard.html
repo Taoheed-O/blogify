@@ -1,0 +1,756 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<body class="bg-light">
+
+
+<!-- ==========================================
+                    LAYOUT
+========================================== -->
+
+<div class="container-fluid">
+
+<div class="row">
+
+
+    <!-- ==================================
+                SIDEBAR
+    =================================== -->
+
+    <aside class="col-md-2 bg-white border-end min-vh-100 p-3">
+
+        <h6 class="text-uppercase text-muted mb-3">
+            Management
+        </h6>
+
+        <div class="nav flex-column nav-pills gap-1">
+
+            <a href="#"
+               class="nav-link active">
+
+                <i class="bi bi-speedometer2 me-2"></i>
+
+                Dashboard
+
+            </a>
+
+            <a href="#" class="nav-link text-dark">
+
+                <i class="bi bi-file-earmark-text me-2"></i>
+
+                Posts
+
+            </a>
+
+            <a href="#" class="nav-link text-dark">
+
+                <i class="bi bi-tags me-2"></i>
+
+                Categories
+
+            </a>
+
+            <a href="#" class="nav-link text-dark">
+
+                <i class="bi bi-people me-2"></i>
+
+                Users
+
+            </a>
+
+            <a href="#" class="nav-link text-dark">
+
+                <i class="bi bi-chat-left-text me-2"></i>
+
+                Comments
+
+            </a>
+
+            <a href="#" class="nav-link text-dark">
+
+                <i class="bi bi-gear me-2"></i>
+
+                Settings
+
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ==================================
+                MAIN CONTENT
+    =================================== -->
+
+    <main class="col-md-10 p-4">
+
+
+        <!-- Page Heading -->
+
+        <div class="d-flex
+                    justify-content-between
+                    align-items-center
+                    mb-4">
+
+            <div>
+
+                <h2 class="fw-bold mb-1">
+                    Dashboard
+                </h2>
+
+                <p class="text-muted mb-0">
+                    Manage your blog content.
+                </p>
+
+            </div>
+
+            <a href="#"
+               class="btn btn-primary">
+
+                <i class="bi bi-plus-lg me-1"></i>
+
+                New Post
+
+            </a>
+
+        </div>
+
+
+        <!-- ==================================
+                STATISTICS
+        =================================== -->
+
+        <div class="row g-4 mb-4">
+
+            <div class="col-lg">
+
+                <div class="card border-0 shadow-sm">
+
+                    <div class="card-body">
+
+                        <div class="d-flex
+                                    justify-content-between">
+
+                            <div>
+
+                                <p class="text-muted mb-1">
+                                    Total Blogs
+                                </p>
+
+                                <h3 class="fw-bold">
+                                    {{blog_count}}
+                                </h3>
+
+                            </div>
+
+                            <i class="bi bi-file-text
+                                      fs-1 text-primary"></i>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg">
+
+                <div class="card border-0 shadow-sm">
+
+                    <div class="card-body">
+
+                        <div class="d-flex
+                                    justify-content-between">
+
+                            <div>
+
+                                <p class="text-muted mb-1">
+                                    Category
+                                </p>
+
+                                <h3 class="fw-bold">
+                                    {{category_count}}
+                                </h3>
+
+                            </div>
+
+                            <i class="bi bi-bar-chart-steps
+                                      fs-1 text"></i>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg">
+
+                <div class="card border-0 shadow-sm">
+
+                    <div class="card-body">
+
+                        <div class="d-flex
+                                    justify-content-between">
+
+                            <div>
+
+                                <p class="text-muted mb-1">
+                                    Published
+                                </p>
+
+                                <h3 class="fw-bold">
+                                    {{published_count}}
+                                </h3>
+
+                            </div>
+
+                            <i class="bi bi-check-circle
+                                      fs-1 text-success"></i>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg">
+
+                <div class="card border-0 shadow-sm">
+
+                    <div class="card-body">
+
+                        <div class="d-flex
+                                    justify-content-between">
+
+                            <div>
+
+                                <p class="text-muted mb-1">
+                                    Drafts
+                                </p>
+
+                                <h3 class="fw-bold">
+                                    {{drafted_count}}
+                                </h3>
+
+                            </div>
+
+                            <i class="bi bi-pencil-square
+                                      fs-1 text-warning"></i>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg">
+
+                <div class="card border-0 shadow-sm">
+
+                    <div class="card-body">
+
+                        <div class="d-flex
+                                    justify-content-between">
+
+                            <div>
+
+                                <p class="text-muted mb-1">
+                                    Featured
+                                </p>
+
+                                <h3 class="fw-bold">
+                                    {{featured_count}}
+                                </h3>
+
+                            </div>
+
+                            <i class="bi bi-book
+                                      fs-1 text-end"></i>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ==================================
+                TABLE CARD
+        =================================== -->
+
+        <div class="card border-0 shadow-sm">
+
+
+            <!-- Table Header -->
+
+            <div class="card-header bg-white p-3">
+
+                <div class="row align-items-center g-3">
+
+                    <div class="col-md-5">
+
+                        <h5 class="mb-0 fw-bold">
+                            Blog Posts
+                        </h5>
+
+                    </div>
+
+
+                    <div class="col-md-7">
+
+                        <div class="d-flex
+                                    justify-content-md-end
+                                    gap-2">
+
+                            <div class="input-group"
+                                 style="max-width:300px;">
+
+                                <span class="input-group-text">
+
+                                    <i class="bi bi-search"></i>
+
+                                </span>
+
+                                <input
+                                    type="search"
+                                    class="form-control"
+                                    placeholder="Search posts...">
+
+                            </div>
+
+
+                            <select class="form-select"
+                                    style="max-width:150px;">
+
+                                <option>
+                                    All Status
+                                </option>
+
+                                <option>
+                                    Published
+                                </option>
+
+                                <option>
+                                    Draft
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ==================================
+                        TABLE
+            =================================== -->
+
+            <div class="table-responsive">
+
+                <table class="table
+                              table-hover
+                              align-middle
+                              mb-0">
+
+                    <thead class="table-light">
+
+                        <tr>
+
+                            <th>
+                                #
+                            </th>
+
+                            <th>
+                                Post
+                            </th>
+
+                            <th>
+                                Author
+                            </th>
+
+                            <th>
+                                Category
+                            </th>
+
+                            <th>
+                                Date
+                            </th>
+
+                            <th>
+                                Status
+                            </th>
+
+                            <th class="text-end">
+                                Actions
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+
+                        <!-- Row 1 -->
+
+                        <tr>
+
+                            <td>
+                                1
+                            </td>
+
+                            <td>
+
+                                <div class="d-flex
+                                            align-items-center
+                                            gap-3">
+
+                                    <img
+                                        src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=100&q=80"
+                                        width="55"
+                                        height="45"
+                                        class="rounded object-fit-cover"
+                                        alt="Post">
+
+                                    <div>
+
+                                        <div class="fw-semibold">
+                                            The Future of AI
+                                        </div>
+
+                                        <small class="text-muted">
+                                            8 min read
+                                        </small>
+
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+                            <td>
+                                John Doe
+                            </td>
+
+                            <td>
+                                Technology
+                            </td>
+
+                            <td>
+                                Aug 09, 2026
+                            </td>
+
+                            <td>
+
+                                <span class="badge
+                                             bg-success-subtle
+                                             text-success">
+
+                                    Published
+
+                                </span>
+
+                            </td>
+
+                            <td class="text-end">
+
+                                <a href="#"
+                                   class="btn btn-sm btn-outline-primary">
+
+                                    <i class="bi bi-eye"></i>
+
+                                </a>
+
+                                <a href="#"
+                                   class="btn btn-sm btn-outline-warning">
+
+                                    <i class="bi bi-pencil"></i>
+
+                                </a>
+
+                                <a href="#"
+                                   class="btn btn-sm btn-outline-danger">
+
+                                    <i class="bi bi-trash"></i>
+
+                                </a>
+
+                            </td>
+
+                        </tr>
+
+
+                        <!-- Row 2 -->
+
+                        <tr>
+
+                            <td>
+                                2
+                            </td>
+
+                            <td>
+
+                                <div class="d-flex
+                                            align-items-center
+                                            gap-3">
+
+                                    <img
+                                        src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?auto=format&fit=crop&w=100&q=80"
+                                        width="55"
+                                        height="45"
+                                        class="rounded object-fit-cover"
+                                        alt="Post">
+
+                                    <div>
+
+                                        <div class="fw-semibold">
+                                            Learning Python
+                                        </div>
+
+                                        <small class="text-muted">
+                                            6 min read
+                                        </small>
+
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+                            <td>
+                                Jane Smith
+                            </td>
+
+                            <td>
+                                Programming
+                            </td>
+
+                            <td>
+                                Aug 07, 2026
+                            </td>
+
+                            <td>
+
+                                <span class="badge
+                                             bg-warning-subtle
+                                             text-warning">
+
+                                    Draft
+
+                                </span>
+
+                            </td>
+
+                            <td class="text-end">
+
+                                <a href="#"
+                                   class="btn btn-sm btn-outline-primary">
+
+                                    <i class="bi bi-eye"></i>
+
+                                </a>
+
+                                <a href="#"
+                                   class="btn btn-sm btn-outline-warning">
+
+                                    <i class="bi bi-pencil"></i>
+
+                                </a>
+
+                                <a href="#"
+                                   class="btn btn-sm btn-outline-danger">
+
+                                    <i class="bi bi-trash"></i>
+
+                                </a>
+
+                            </td>
+
+                        </tr>
+
+
+                        <!-- Row 3 -->
+
+                        <tr>
+
+                            <td>
+                                3
+                            </td>
+
+                            <td>
+
+                                <div class="d-flex
+                                            align-items-center
+                                            gap-3">
+
+                                    <img
+                                        src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=100&q=80"
+                                        width="55"
+                                        height="45"
+                                        class="rounded object-fit-cover"
+                                        alt="Post">
+
+                                    <div>
+
+                                        <div class="fw-semibold">
+                                            Understanding Cloud Computing
+                                        </div>
+
+                                        <small class="text-muted">
+                                            10 min read
+                                        </small>
+
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+                            <td>
+                                Mike Johnson
+                            </td>
+
+                            <td>
+                                Cloud
+                            </td>
+
+                            <td>
+                                Aug 04, 2026
+                            </td>
+
+                            <td>
+
+                                <span class="badge
+                                             bg-success-subtle
+                                             text-success">
+
+                                    Published
+
+                                </span>
+
+                            </td>
+
+                            <td class="text-end">
+
+                                <a href="#"
+                                   class="btn btn-sm btn-outline-primary">
+
+                                    <i class="bi bi-eye"></i>
+
+                                </a>
+
+                                <a href="#"
+                                   class="btn btn-sm btn-outline-warning">
+
+                                    <i class="bi bi-pencil"></i>
+
+                                </a>
+
+                                <a href="#"
+                                   class="btn btn-sm btn-outline-danger">
+
+                                    <i class="bi bi-trash"></i>
+
+                                </a>
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            <!-- ==================================
+                        PAGINATION
+            =================================== -->
+
+            <div class="card-footer bg-white">
+
+                <nav>
+
+                    <ul class="pagination
+                               justify-content-end
+                               mb-0">
+
+                        <li class="page-item disabled">
+
+                            <a class="page-link" href="#">
+                                Previous
+                            </a>
+
+                        </li>
+
+                        <li class="page-item active">
+
+                            <a class="page-link" href="#">
+                                1
+                            </a>
+
+                        </li>
+
+                        <li class="page-item">
+
+                            <a class="page-link" href="#">
+                                2
+                            </a>
+
+                        </li>
+
+                        <li class="page-item">
+
+                            <a class="page-link" href="#">
+                                3
+                            </a>
+
+                        </li>
+
+                        <li class="page-item">
+
+                            <a class="page-link" href="#">
+                                Next
+                            </a>
+
+                        </li>
+
+                    </ul>
+
+                </nav>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+</div>
+
+
+{% endblock %}
