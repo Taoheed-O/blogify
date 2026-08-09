@@ -1,0 +1,64 @@
+<!-- ==================================
+            SIDEBAR
+=================================== -->
+
+<aside class="col-md-2 bg-white border-end min-vh-100 p-3">
+
+    <h6 class="text-uppercase text-muted mb-3">
+        Management
+    </h6>
+
+    <div class="nav flex-column nav-pills gap-1">
+
+        <a href="{% url 'dashboard' %}"
+           class="nav-link text-dark {% if '/dashboards/' == request.path %} active {% endif %}">
+
+            <i class="bi bi-speedometer2 me-2"></i>
+
+            Dashboard
+
+        </a>
+
+        <a href="#" class="nav-link text-dark">
+
+            <i class="bi bi-file-earmark-text me-2"></i>
+
+            Posts
+
+        </a>
+
+        <a href="{% url 'category_dashboard' %}" class="nav-link text-dark {% if '/dashboards/categories/' == request.path %} active {% endif %}">
+
+            <i class="bi bi-tags me-2"></i>
+
+            Categories
+
+        </a>
+
+        <a href="#" class="nav-link text-dark">
+
+            <i class="bi bi-people me-2"></i>
+
+            Users
+
+        </a>
+
+        <a href="#" class="nav-link text-dark">
+
+            <i class="bi bi-chat-left-text me-2"></i>
+
+            Comments
+
+        </a>
+
+        <a href="#" class="nav-link text-dark">
+
+            <i class="bi bi-gear me-2"></i>
+
+            Settings
+
+        </a>
+
+    </div>
+
+</aside>

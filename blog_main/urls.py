@@ -27,7 +27,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
     path('category/', include('blogs.urls')),
-    path('dashboards', include('dashboards.urls')),
+    path('dashboards/', include('dashboards.urls')),
 
     path('<slug:slug>/', blogViews.blogs, name='blogs'),
     # search

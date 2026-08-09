@@ -1,9 +1,11 @@
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 from blogs.models import Blog, Category
 
 # Create your views here.
 
 # Dashboard
+@login_required(login_url='login')
 def dashboard(request):
     blog_count = Blog.objects.all().count()
     category_count = Category.objects.all().count()
@@ -19,3 +21,8 @@ def dashboard(request):
         "drafted_count": drafted_count
     }
     return render(request,'dashboards/dashboard.html', context=context)
+
+
+def category_dashboard(request):
+
+    return render(request,'dashboards/category_dashboard.html')
