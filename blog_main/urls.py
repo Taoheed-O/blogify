@@ -27,6 +27,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
     path('category/', include('blogs.urls')),
+    path('dashboards', include('dashboards.urls')),
+
     path('<slug:slug>/', blogViews.blogs, name='blogs'),
     # search
     path('blogs/search/', blogViews.search_blogs, name='search_blogs'),
@@ -34,6 +36,7 @@ urlpatterns = [
     path('blogs/register/', views.register, name='register'),
     path('blogs/login/', views.login, name='login'),
     path('blogs/logout/', views.logout, name='logout'),
+
 ]
 
 # Url patterns + image urls
