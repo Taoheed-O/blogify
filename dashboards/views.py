@@ -23,6 +23,11 @@ def dashboard(request):
     return render(request,'dashboards/dashboard.html', context=context)
 
 
+# Show the category dashboard...
 def category_dashboard(request):
-
     return render(request,'dashboards/category_dashboard.html')
+
+
+# Add new category
+def add_new_category(request):
+    return render(request,'dashboards/add_new_category.html')

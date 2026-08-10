@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container-fluid">
+
+<div class="row">
+<!--    ============== EXTEND SIDEBAR =======================-->
+<!--    =====================================================-->
+    {% include 'dashboards/sidebar.html' %}
+
+
+    <!--======================== MAIN CONTENT ==========================-->
+    <!--================================================================-->
+
+    <main class="col-md-10 p-4">
+      <h2> <b>Categories</b></h2>
+        <div class="d-flex float-lg-end">
+            <a href="{% url 'category_dashboard' %}"
+               class="btn btn-primary">
+
+                <i class="bi bi-skip-backward me-1"></i>
+
+                 Back
+
+            </a>
+        </div>
+        <form action="{% url 'add_category' %}" type="POST">
+            <button type="submit" class="btn btn-primary float-lg-start">
+                submit
+            </button>
+        </form>
+    </main>
+</div>
+</div>
+
+{% endblock %}
