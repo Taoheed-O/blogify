@@ -1,6 +1,6 @@
-from lib2to3.fixes.fix_input import context
+from multiprocessing import context
 
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from blogs.models import Blog, Category
 from .forms import  CategoryForm
@@ -41,3 +41,27 @@ def add_new_category(request):
     form = CategoryForm()
     context = {'form': form}
     return render(request,'dashboards/add_new_category.html', context=context)
+
+
+# Edit existing categories
+def edit_category(request, pk):
+    category = get_object_or_404(Category, pk=pk)
+    if request.method == 'POST':
+        form = CategoryForm(request.POST, instance=category)
+        if form.is_valid():
+            form.save()
+            return redirect('category_dashboard')
+    form = CategoryForm(instance=category)
+    context = {
+        'form': form,
+        'category': category
+    }
+    return render(request,'dashboards/edit_category.html', context)
+
+
+# Delete a category
+def delete_category(request, pk):
+    category = get_object_or_404(Category, pk=pk)
+    category.delete()
+    return redirect('category_dashboard')
+    return render(request,'dashboards/category_dashboard.html', context=context)

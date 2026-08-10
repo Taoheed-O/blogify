@@ -6,5 +6,7 @@ from . import views
 urlpatterns = [
     path('', views.dashboard, name='dashboard'),
     path('categories/', views.category_dashboard, name='category_dashboard'),
-    path('add_new_category/', views.add_new_category, name='add_new_category'),
+    path('categories/add/', views.add_new_category, name='add_new_category'),
+    path('categories/edit/<int:pk>', views.edit_category, name='edit_category'),
+    path('categories/delete/<int:pk>', views.delete_category, name='delete_category'),
 ]
