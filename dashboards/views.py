@@ -1,6 +1,9 @@
-from django.shortcuts import render
+from lib2to3.fixes.fix_input import context
+
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from blogs.models import Blog, Category
+from .forms import  CategoryForm
 
 # Create your views here.
 
@@ -30,4 +33,11 @@ def category_dashboard(request):
 
 # Add new category
 def add_new_category(request):
-    return render(request,'dashboards/add_new_category.html')
+    if request.method == 'POST':
+        form = CategoryForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('category_dashboard')
+    form = CategoryForm()
+    context = {'form': form}
+    return render(request,'dashboards/add_new_category.html', context=context)

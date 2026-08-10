@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+{% load crispy_forms_tags %}
 <div class="container-fluid">
 
 <div class="row">
@@ -24,11 +25,15 @@
 
             </a>
         </div>
-        <form action="{% url 'add_category' %}" type="POST">
-            <button type="submit" class="btn btn-primary float-lg-start">
-                submit
-            </button>
-        </form>
+        <div class="register-card align-content-md-center">
+            <form action="{% url 'add_new_category' %}" method="POST">
+                {% csrf_token %}
+                {{form | crispy}}
+                <button type="submit" class="btn btn-primary float-lg-start">
+                    submit
+                </button>
+            </form>
+        </div>
     </main>
 </div>
 </div>
