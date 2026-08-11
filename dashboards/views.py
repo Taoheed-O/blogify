@@ -119,3 +119,8 @@ def delete_post(request, pk):
     post = get_object_or_404(Blog, pk=pk)
     post.delete()
     return redirect('posts')
+
+
+# User section
+def users(request):
+    return render(request, 'dashboards/users.html')
