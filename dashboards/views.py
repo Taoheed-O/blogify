@@ -1,9 +1,9 @@
 from multiprocessing import context
-
+from django.template.defaultfilters import slugify
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from blogs.models import Blog, Category
-from .forms import  CategoryForm
+from .forms import  CategoryForm, BlogForm
 
 # Create your views here.
 
@@ -65,3 +65,57 @@ def delete_category(request, pk):
     category.delete()
     return redirect('category_dashboard')
     return render(request,'dashboards/category_dashboard.html', context=context)
+
+
+# View posts
+def posts(request):
+    blogs = Blog.objects.all()
+
+    context = {
+        "blogs": blogs,
+    }
+    return render(request,'dashboards/posts.html', context=context)
+
+
+# Add a new post
+def add_new_post(request):
+    if request.method == 'POST':
+        form = BlogForm(request.POST, request.FILES)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user
+            post.save()
+            slug = form.cleaned_data["title"]
+            post.slug = slugify(slug) +'-'+ str(post.id)
+            post.save()
+            return redirect('posts')
+    form = BlogForm()
+    context = {'form': form}
+    return render(request,'dashboards/add_new_post.html', context=context)
+
+
+# Edit existing posts
+def edit_post(request, pk):
+    post = get_object_or_404(Blog, pk=pk)
+    if request.method == 'POST':
+        form = BlogForm(request.POST, request.FILES, instance=post)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.save()
+            slug = form.cleaned_data["title"]
+            post.slug = slugify(slug) + '-' + str(post.id)
+            post.save()
+            return redirect('posts')
+    form = BlogForm(instance=post)
+    context = {
+        'form': form,
+        'post': post
+    }
+    return render(request,'dashboards/edit_post.html', context)
+
+
+# Delete post
+def delete_post(request, pk):
+    post = get_object_or_404(Blog, pk=pk)
+    post.delete()
+    return redirect('posts')
