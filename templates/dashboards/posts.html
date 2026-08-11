@@ -210,18 +210,40 @@
 
                             <td>
 
-                                <span class="badge
+                                <span>
+                                    {% if blog.status == 'Published' %} <span class="badge
                                              bg-success-subtle
                                              text-success">
 
                                     {{blog.status}}
 
+                                </span>{% else %} <span class="badge
+                                             bg-warning-subtle
+                                             text-warning">
+
+                                    {{blog.status}}
+
+                                </span> {% endif %}
                                 </span>
 
                             </td>
 
                             <td>
-                                {{blog.is_featured}}
+                                <span>
+                                    {% if blog.is_featured %} <span class="badge
+                                             bg-success-subtle
+                                             text-success">
+
+                                    {{blog.is_featured}}
+
+                                </span>{% else %} <span class="badge
+                                             bg-danger-subtle
+                                             text-danger">
+
+                                    {{blog.is_featured}}
+
+                                </span> {% endif %}
+                                </span>
                             </td>
 
                             <td class="text-end">
