@@ -18,4 +18,5 @@ urlpatterns = [
     # Users Operations
     path('users/', views.users, name='users'),
     path('users/add/', views.add_new_user, name='add_new_user'),
+    path('users/edit/<int:pk>', views.edit_user, name='edit_user'),
 ]
