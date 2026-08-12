@@ -21,7 +21,7 @@
         <div class="card border-0 shadow-sm">
 
             <!-- Table Header -->
-
+            {% if perms.auth.view_user %}
             <div class="card-header bg-white p-3">
 
                 <div class="row align-items-center g-3">
@@ -259,6 +259,7 @@
             </div>
 
 
+
             <!-- ==================================
                         PAGINATION
             =================================== -->
@@ -301,20 +302,23 @@
                                 3
                             </a>
 
+                            </li>
+
+                            <li class="page-item">
+
+                            <a class="page-link" href="#">
+                                    Next
+                            </a>
+
                         </li>
 
-                        <li class="page-item">
+                     </ul>
 
-                        <a class="page-link" href="#">
-                                Next
-                        </a>
-
-                    </li>
-
-                 </ul>
-
-            </nav>
-        </div>
+                </nav>
+            </div>
+            {% else %}
+            <h5> You are not authorized to view this page. Contact support.</h5>
+            {% endif %}
 
     </div>
 </main>

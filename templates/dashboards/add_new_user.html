@@ -14,6 +14,7 @@
     <!--================================================================-->
 
     <main class="col-md-10 p-4">
+      {% if perms.auth.view_user %}
       <h2> <b>Users</b></h2>
         <div class="d-flex float-lg-end">
             <a href="{% url 'users' %}"
@@ -34,7 +35,11 @@
                 </button>
             </form>
         </div>
+        {% else %}
+        <h5> You are not authorized to view this page. Contact support.</h5>
+        {% endif %}
     </main>
+
 </div>
 </div>
 

@@ -139,6 +139,8 @@ def add_new_user(request):
         if form.is_valid():
             form.save()
             return redirect('users')
+        else:
+            print(form.errors)
     form = UserForm()
     context = {'form': form}
     return render(request,'dashboards/add_new_user.html', context=context)
