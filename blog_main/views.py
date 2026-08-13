@@ -46,6 +46,7 @@ def register(request):
 
 # Login page
 def login(request):
+    error_message = 'Username or password is incorrect.'
     if request.method == "POST":
         form = AuthenticationForm(request, request.POST)
         if form.is_valid():
@@ -54,10 +55,15 @@ def login(request):
             user = auth.authenticate(username=username, password=password)
             if user is not None:
                 auth.login(request, user)
+            else:
+                return error_message
             return redirect('home')
     form = AuthenticationForm()
 
-    context = {'form': form}
+    context = {
+        'form': form,
+        'error_message': error_message,
+    }
     return render(request, 'login.html',  context=context)
 
 

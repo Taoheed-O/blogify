@@ -1,7 +1,9 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.db.models import Q
-from django.http import HttpResponse
-from .models import Blog, Category
+from django.http import HttpResponse, HttpResponseRedirect
+from .models import Blog, Category, Comments
+
+
 # Create your views here.
 
 # View posts by category
@@ -19,7 +21,23 @@ def categorical_posts(request, category_id):
 # Blog views [detailed view of each blog]
 def blogs(request, slug):
     blog_page = get_object_or_404(Blog, slug=slug, status = 'Published')
-    context = {'blog_page': blog_page}
+    # Add comment
+    if request.method == 'POST':
+        comment = Comments()
+        comment.user = request.user
+        comment.blog = blog_page
+        comment.comment = request.POST['comment']
+        comment.save()
+        return HttpResponseRedirect(request.path_info)
+
+    # Comments
+    comments = Comments.objects.filter(blog=blog_page)
+    comment_count = comments.count()
+    context = {
+        'blog_page': blog_page,
+        'comments': comments,
+        'comment_count': comment_count,
+    }
     return render(request, 'blogs.html', context)
 
 

@@ -347,40 +347,73 @@
 
     </section>
 
+
     <!-- ==========================================
                     Comments
     ========================================== -->
 
     <section class="comments">
+        &emsp;
+        <h2>Comments({{comment_count}})</h2>
+        {% if comments %}
+            {% for comment in comments %}
+                <div class="comment-card">
 
-        <h2>
+                    <div class="comment-header">
 
-            Leave a Comment
+                        <div class="user-info">
 
-        </h2>
+                            <div>
+                                <h6>{{comment.user}}</h6>
 
-        <form>
+                                <small>
+                                    {{comment.created_at | date:"D, M, Y" }}
+                                </small>
+                            </div>
 
-            <input
-                type="text"
-                placeholder="Your Name">
+                        </div>
+                        {% if perms.auth.view_user %}
+                            <button class="btn btn-sm text-danger">
+                                <i class="bi bi-trash"></i>
+                            </button>
+                        {% endif %}
 
-            <input
-                type="email"
-                placeholder="Email">
+                    </div>
 
-            <textarea
-                rows="6"
-                placeholder="Write your comment..."></textarea>
+                    <p class="comment-text">
+                        {{comment.comment}}
+                    </p>
 
-            <button>
+                </div>
+            {% endfor %}
+        {% else %}
+        No comments
+        {% endif %}
+        &emsp;
+        &emsp;
+        {% if user.is_authenticated %}
+            <h2>
 
-                Post Comment
+                Leave a Comment
 
-            </button>
+            </h2>
 
-        </form>
+            <form action="" method="POST">
+                {% csrf_token %}
 
+                <textarea
+                    rows="6"
+                    name="comment"
+                    placeholder="Write your comment..."></textarea>
+
+                <button type="submit" value="submit">
+                    Post comment
+                </button>
+
+            </form>
+        {% else %}
+            <h5> Please <span style="color: #0a58ca;"><a href="{% url 'login' %}"> login </a></span> to leave a comment.</h5>
+        {% endif %}
     </section>
 
     {% endblock %}
