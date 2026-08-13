@@ -42,3 +42,22 @@ class Blog(models.Model):
     # Return the blog title
     def __str__(self):
         return self.title
+
+
+# Comments section
+class Comments(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    blog = models.ForeignKey(Blog, on_delete=models.CASCADE)
+    comment = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+
+    # Verbose name change
+    class Meta:
+        verbose_name_plural = 'Comments'
+
+
+    # Return the string comment
+    def __str__(self):
+        return self.comment

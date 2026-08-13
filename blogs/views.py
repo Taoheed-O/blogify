@@ -23,9 +23,17 @@ def blogs(request, slug):
     return render(request, 'blogs.html', context)
 
 
-# Search view function
+# Search blogs view function
 def search_blogs(request):
     keyword = request.GET.get('keyword')
     blogs = Blog.objects.filter(Q(title__icontains=keyword) | Q(short_description__icontains=keyword) | Q(body__icontains=keyword), status='Published')
     context = {'blogs': blogs}
     return render(request, 'search_blogs.html', context=context)
+
+
+# # Search Users view function
+# def search_users(request):
+#     keyword = request.GET.get('keyword')
+#     blogs = Blog.objects.filter(Q(title__icontains=keyword) | Q(short_description__icontains=keyword) | Q(body__icontains=keyword), status='Published')
+#     context = {'blogs': blogs}
+#     return render(request, 'search_blogs.html', context=context)
