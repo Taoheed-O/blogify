@@ -55,3 +55,5 @@ def search_blogs(request):
 #     blogs = Blog.objects.filter(Q(title__icontains=keyword) | Q(short_description__icontains=keyword) | Q(body__icontains=keyword), status='Published')
 #     context = {'blogs': blogs}
 #     return render(request, 'search_blogs.html', context=context)
+
+

@@ -3,7 +3,7 @@ from django.template.defaultfilters import slugify
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from blogs.models import Blog, Category
+from blogs.models import Blog, Category, Comments
 from .forms import CategoryForm, BlogForm, UserForm, EditUserForm
 
 
@@ -167,3 +167,10 @@ def delete_user(request, pk):
     user = get_object_or_404(User, pk=pk)
     user.delete()
     return redirect('users')
+
+
+def show_comments(request):
+    comment = Comments.objects.all()
+    context = {'comments': comment}
+
+    return render(request, 'dashboards/show_comments.html', context=context)

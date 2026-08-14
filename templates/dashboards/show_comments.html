@@ -1,0 +1,306 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<body class="bg-light">
+
+
+<!-- ==========================================
+                    LAYOUT
+========================================== -->
+
+<div class="container-fluid">
+
+<div class="row">
+
+
+<!--    ============== EXTEND SIDEBAR =======================-->
+<!--    =====================================================-->
+{% include 'dashboards/sidebar.html' %}
+
+    <!-- ==================================
+                MAIN CONTENT
+    =================================== -->
+
+    <main class="col-md-10 p-4">
+
+
+        <!-- ==================================
+                TABLE CARD
+        =================================== -->
+
+        <div class="card border-0 shadow-sm">
+
+            <!-- Table Header -->
+
+            <div class="card-header bg-white p-3">
+
+                <div class="row align-items-center g-3">
+
+                    <div class="col-md-5">
+
+                        <h5 class="mb-0 fw-bold">
+                            Blog Comments
+                        </h5>
+
+                    </div>
+
+                    <div class="col-md-7">
+
+<!--                        <div class="d-flex-->
+<!--                                    justify-content-md-end-->
+<!--                                    gap-2">-->
+
+<!--                            <div class="input-group"-->
+<!--                                 style="max-width:300px;">-->
+
+<!--                                <span class="input-group-text">-->
+
+<!--                                    <i class="bi bi-search"></i>-->
+
+<!--                                </span>-->
+
+<!--                                <input-->
+<!--                                    type="search"-->
+<!--                                    class="form-control"-->
+<!--                                    placeholder="Search posts...">-->
+
+<!--                            </div>-->
+
+
+<!--                            <select class="form-select"-->
+<!--                                    style="max-width:150px;">-->
+
+<!--                                <option>-->
+<!--                                    All Status-->
+<!--                                </option>-->
+
+<!--                                <option>-->
+<!--                                    Published-->
+<!--                                </option>-->
+
+<!--                                <option>-->
+<!--                                    Draft-->
+<!--                                </option>-->
+
+<!--                            </select>-->
+
+<!--                            <div class="col-md-7 float-lg-end">-->
+<!--                                <a href="{% url 'add_new_post' %}"-->
+<!--                                    class="btn btn-primary">-->
+
+<!--                                <i class="bi bi-plus-lg me-1"></i>-->
+
+<!--                                Add New-->
+
+<!--                                </a>-->
+<!--                            </div>-->
+
+<!--                        </div>-->
+
+<!--                    </div>-->
+
+<!--                </div>-->
+
+            </div>
+
+
+
+            <!-- ==================================
+                        TABLE
+            =================================== -->
+
+            <div class="table-responsive">
+
+                <table class="table
+                              table-hover
+                              align-middle
+                              mb-0">
+
+                    <thead class="table-light">
+
+                        <tr>
+
+                            <th>
+                                #
+                            </th>
+
+                            <th>
+                                Post
+                            </th>
+
+                            <th>
+                                Comment
+                            </th>
+
+                            <th>
+                                Author
+                            </th>
+
+                            <th>
+                                Created
+                            </th>
+
+                            <th>
+                                Category
+                            </th>
+
+                            <th class="text-end">
+                                Status
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+                    {% for comment in comments %}
+
+                        <!-- Row 1 -->
+
+                        <tr>
+
+                            <td>
+                                {{comment.id}}
+                            </td>
+
+                            <td>
+
+                                <div class="d-flex
+                                            align-items-center
+                                            gap-3">
+
+                                    <img
+                                        src="{{ comment.blog.image.url }}"
+                                        class="w-100 object-fit-cover" style="height: 200px; width: 200px;"
+                                        alt="Post">
+
+                                    <div>
+
+                                        <div class="fw-semibold">
+                                            {{comment.blog.title}}
+                                        </div>
+
+                                        <small class="text-muted">
+                                            8 min read
+                                        </small>
+
+                                    </div>
+
+                                </div>
+
+                            </td>
+
+                            <td>
+                                {{comment.comment}}
+                            </td>
+
+                            <td>
+                                {{comment.user}}
+
+
+                            <td>
+                                {{comment.created_at | date:"M, d, Y"}}
+                            </td>
+
+                            <td>
+                                {{comment.blog.category}}
+                            </td>
+
+                            <td>
+
+                                <span>
+                                    {% if comment.blog.status == 'Published' %} <span class="badge
+                                             bg-success-subtle
+                                             text-success">
+
+                                    {{comment.blog.status}}
+
+                                </span>{% else %} <span class="badge
+                                             bg-warning-subtle
+                                             text-warning">
+
+                                    {{comment.blog.status}}
+
+                                </span> {% endif %}
+                                </span>
+
+                            </td>
+
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            <!-- ==================================
+                        PAGINATION
+            =================================== -->
+
+            <div class="card-footer bg-white">
+
+                <nav>
+
+                    <ul class="pagination
+                               justify-content-end
+                               mb-0">
+
+                        <li class="page-item disabled">
+
+                            <a class="page-link" href="#">
+                                Previous
+                            </a>
+
+                        </li>
+
+                        <li class="page-item active">
+
+                            <a class="page-link" href="#">
+                                1
+                            </a>
+
+                        </li>
+
+                        <li class="page-item">
+
+                            <a class="page-link" href="#">
+                                2
+                            </a>
+
+                        </li>
+
+                        <li class="page-item">
+
+                            <a class="page-link" href="#">
+                                3
+                            </a>
+
+                        </li>
+
+                        <li class="page-item">
+
+                            <a class="page-link" href="#">
+                                Next
+                            </a>
+
+                        </li>
+
+                    </ul>
+
+                </nav>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+</div>
+
+{% endblock %}

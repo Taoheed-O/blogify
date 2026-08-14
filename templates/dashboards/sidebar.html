@@ -46,7 +46,7 @@
         </a>
         {% endif %}
 
-        <a href="#" class="nav-link text-dark">
+        <a href="{% url 'show_comments' %}" class="nav-link text-dark {% if '/dashboards/show_comments/' == request.path %} active {% endif %}">
 
             <i class="bi bi-chat-left-text me-2"></i>
 
