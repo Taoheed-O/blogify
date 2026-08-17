@@ -124,10 +124,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 MEDIA_URL = '/images/'
-STATIC_ROOT = BASE_DIR /'static'
+STATIC_ROOT = BASE_DIR /'staticfiles'
 
 STATICFILES_DIRS = [
-    'blog_main/static'
+    BASE_DIR / 'static'
 ]
 
 MEDIA_ROOT = BASE_DIR / 'static/images'
